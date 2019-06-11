@@ -1,0 +1,260 @@
+<br><br><br>
+<div class=" container offset-2,5 ">
+  <div class="card text-center mat-elevation-z20">
+    <div class="card-header ">
+      <ul class="nav nav-tabs card-header-tabs ">
+        <li class="nav-item border">
+          <a class="nav-link text-dark " routerLink=""  data-toggle="modal" data-target="#open-modal">Products </a>
+        </li>
+        <li class="nav-item border">
+          <a class="nav-link text-dark"  routerLink="/pets">Add a pet </a>
+        </li>
+        <li class="nav-item border">
+          <a class="nav-link text-dark" routerLink="#">Mate my pet</a>
+        </li>
+        <li class="nav-item border">
+          <a routerLink="#"class="nav-link text-dark dropdown-toggle "  data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false" >Services for entrepreneurs </a>
+          <ul class="nav-item dropdown-menu ">
+            <li >
+              <a class="dropdown-item text-dark " routerLink="#">
+   Pet bussiness ads
+   </a>
+            </li>
+            <li>
+               <a class="dropdown-item text-dark " routerLink="#">
+   Pet care taker ads
+   </a>
+            </li>
+ 
+            <li>
+               <a class=" dropdown-item text-dark " routerLink="#">
+Dog walker ads  </a>
+            </li>
+          </ul><!
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+  <div class="jumbotron text-center mat-elevation-z8 ">
+    <h1 class="display-1">
+        <i class=" display-1 material-icons">
+            pets
+            </i> {{title}}
+    </h1>
+    <br>
+    <hr class="my-4">
+    <h4 class="text-left">
+      Welcome: {{identity.name}}
+    </h4>
+    <br>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <hr class="my-4">
+
+  
+    
+    <!-- Split dropup button -->
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="open-modal" tabindex="-1" role="dialog" aria-labelledby="open-modalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header ">
+        <h5 class="modal-title  offset-4" >Register your pet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+<div class="container">
+  <br><br><br><br>
+<div class=" card mat-elevation-z8">
+  <div class="card-title  mat-display-1">
+      <mat-divider></mat-divider>
+<br>
+<h1 class="text-center text-dark">{{title}}</h1>
+<br>
+<mat-divider></mat-divider>
+<br>
+
+
+  </div>
+
+<form #registerForm="ngForm" class="col-lg-12">
+
+  <mat-form-field class="col-sm-6">
+    <input matInput type="text"   placeholder="Age:" name="age" [(ngModel)]="user.age"
+      required>
+     
+   <mat-icon matSuffix class="md-light">cake</mat-icon>
+    <mat-hint>How old is your pet?</mat-hint>
+
+  </mat-form-field>
+  
+  <mat-form-field class="col-sm-6">
+    <input matInput type="text"   placeholder="Animal:" name="animal" [(ngModel)]="user.animal"
+      required>
+     
+   <mat-icon matSuffix class="md-light">star</mat-icon>
+    <mat-hint>Animal kind</mat-hint>
+
+  </mat-form-field>
+  <mat-form-field class="col-sm-6">
+    <input matInput type="text"   placeholder="Race:" name="race" [(ngModel)]="user.race"
+      required>
+     
+   <mat-icon matSuffix class="md-light">style</mat-icon>
+    <mat-hint>Ex. (Dogs)  pitbull,husky</mat-hint>
+
+  </mat-form-field>
+  <mat-form-field class="col-sm-6">
+    <input matInput type="text"   placeholder="sex:" name="sex" [(ngModel)]="user.sex"
+      required>
+     
+   <mat-icon matSuffix class="md-light">local_hospital</mat-icon>
+    <mat-hint>Mention any sex issue</mat-hint>
+
+  </mat-form-field>
+
+
+
+
+    <mat-form-field class="col-sm-6">
+        <input matInput type="text"   placeholder="Allergies:" name="allergies" [(ngModel)]="user.allergies"
+          required>
+         
+       <mat-icon matSuffix class="md-light">warning</mat-icon>
+        <mat-hint>All kind of allergies!</mat-hint>
+
+      </mat-form-field>
+      
+      <mat-form-field class="col-sm-6">
+          <input matInput type="text"  placeholder="Meals:" name="meals" [(ngModel)]="user.meals"
+           required >
+         
+          <mat-icon matSuffix class="md-light">restaurant</mat-icon>
+          <mat-hint>Food preference</mat-hint>
+
+        </mat-form-field>
+        <mat-form-field class="col-sm-6">
+            <input matInput type="text"  placeholder="Address:" name="address" [(ngModel)]="user.address"
+              >
+           
+            <mat-icon matSuffix class="md-light">location_on</mat-icon>
+            <mat-hint>Where to locate the owner</mat-hint>
+          </mat-form-field>
+          <mat-form-field class="col-sm-6">
+              <input matInput type="text"  placeholder="Phone:" name="mobile" [(ngModel)]="user.mobile"
+                >
+             
+              <mat-icon matSuffix class="md-light">phone</mat-icon>
+              <mat-hint>Where to locate the owner </mat-hint>
+            </mat-form-field>
+          <mat-form-field class="col-sm-6">
+              <input matInput type="text"  placeholder="Vaccination:" name="vaccination" [(ngModel)]="user.vaccination"
+               required >
+             
+              <mat-icon matSuffix class="md-light">check_circle</mat-icon>
+              <mat-hint>all vaccines here</mat-hint>
+              
+            </mat-form-field>
+            <mat-form-field class="col-sm-6">
+                <input matInput type="text"  placeholder="Licensing:" name="licensing" [(ngModel)]="user.licensing"
+                required >
+               
+                <mat-icon matSuffix class="md-light">pets</mat-icon>
+                <mat-hint>License or pet's Id</mat-hint>
+              </mat-form-field>
+              <mat-form-field class="col-sm-6">
+                <input matInput type="text"  placeholder="Status:" name="status" [(ngModel)]="user.status"
+                required >
+               
+                <mat-icon matSuffix class="md-light">flag</mat-icon>
+                <mat-hint>Set your pet's status</mat-hint>
+              </mat-form-field>
+              <mat-form-field class="col-sm-6">
+                <input matInput type="text"  placeholder="Extra info:" name="comments" [(ngModel)]="user.comments"
+                required >
+               
+                <mat-icon matSuffix class="md-light">info</mat-icon>
+                <mat-hint>Add more info here</mat-hint>
+              </mat-form-field>
+           
+<br><br><br><br>
+
+   
+  
+              <mat-divider></mat-divider>
+<br>  
+
+<div class=" text-center">
+<button type="submit" mat-raised-button class="border border-dark mat-elevation-z20 btn btn-light btn-lg" color="silver" [disabled]="!registerForm.valid"
+
+>Create </button>
+</div>
+<br><br>
+
+</form>
+<div class="card card-footer text-center bg-silver">
+<br>
+<h5>if you are already registered your pet please go to <a routerLink="/login">Pet's profile</a> page</h5>
+<br>
+<div class="text-left ">
+ <h1 class="text-danger">*</h1><p>Mandatory field or just type N/A</p>
+
+</div>
+
+
+</div>
+</div>
+<br></div>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-secondary" >Close</button>
+        <button type="button" class="btn btn-primary" routerLink="/pets" data-dismiss="modal">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+    <hr class="my-4">
+    <br>
+    <div class="container text-center  text-dark offset-4">
+    <div class="row ">
+      <div class="col-1">
+      <a href="https://www.facebook.com/Sunny-Hostals-261669591256712/"><i class="fab fa-facebook-f  text-dark"></i></a>
+</div>
+<div class="col-1">
+
+      <a href="https://www.instagram.com/misael_jr76/"><i class="fab fa-instagram  text-dark" aria-hidden="true"></i>
+        </a>
+</div>
+<div class="col-1">
+
+      <a href="https://twitter.com/Sunnyhostals1"><i class="fab fa-twitter   text-dark" aria-hidden="true"></i>
+        </a>
+</div>
+<div class="col-1">
+
+      <a href="https://www.linkedin.com/in/misael-jimenez-345b11172/"><i class="fab fa-linkedin-in  text-dark " aria-hidden="true"></i>
+        </a>
+        </div>
+        </div>
+        </div>
+  
+
+
+<div class="text-right ">
+  <a class="text-dark" routerLink="/about">Learn more</a>
+</div>
+  </div>
+</div>
+</div></div>

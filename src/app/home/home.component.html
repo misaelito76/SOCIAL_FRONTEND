@@ -1,0 +1,211 @@
+<div class=" container">
+  <br><br>
+  <div class="card text-center mat-elevation-z20">
+    <!--<div class="card-header ">
+      <ul class="nav nav-tabs card-header-tabs ">
+        <li class="nav-item border">
+          <a id="corner"class="nav-link text-dark" mat-raised-tab routerLink="/pets">Pet's corner </a>
+        </li>
+        <li class="nav-item border">
+          <a class="nav-link text-dark"  routerLink="/timeline">Timeline </a>
+        </li>
+        <li class="nav-item border">
+          <a class="nav-link text-dark" routerLink="/edit-user">My messages </a>
+        </li>
+        <li class="nav-item border">
+          <a routerLink="#" class="nav-link text-dark dropdown-toggle " data-toggle="dropdown" 
+          aria-haspopup="true" aria-expanded="false" >Expert care tips </a>
+          <ul class="nav-item dropdown-menu ">
+            <li >
+              <a class="dropdown-item text-dark " >
+   Dogs
+   </a>
+            </li>
+            <li>
+               <a class="dropdown-item text-dark " routerLink="#">
+   Cats
+   </a>
+            </li>
+            <li>
+               <a class=" dropdown-item text-dark " routerLink="#">
+   Fishes
+   </a>
+            </li>
+            <li>
+               <a class=" dropdown-item text-dark " routerLink="#">
+   Snakes
+   </a>
+            </li>
+            <li>
+              <a class=" dropdown-item text-dark " routerLink="#">
+  Hamsters
+  </a>
+           </li>
+           <li>
+            <a class=" dropdown-item text-dark " routerLink="#">
+  Spiders
+</a>
+         </li>
+         <li>
+          <a class=" dropdown-item text-dark " routerLink="#">
+   Pigs
+</a>
+       </li>
+       <li>
+        <a class=" dropdown-item text-dark " routerLink="#">
+Birds
+</a>
+     </li>
+     <li>
+      <a class=" dropdown-item text-dark " routerLink="#">
+Birds
+</a>
+   </li>
+   <li>
+    <a class=" dropdown-item text-dark " routerLink="#">
+Birds
+</a>
+ </li>
+
+          </ul>
+       
+        <li  class="nav-item border">
+          <a class=" nav-link text-danger " routerLink="#">
+Alert for lost pets!
+</a>
+       </li>
+       <li class="nav-item border">
+        <a class="nav-link text-dark" [routerLink]="['/profile',identity._id]">My profile </a>
+      </li>
+      </ul>
+    </div>-->
+    <div class="card-body">
+      <div class="jumbotron text-center mat-elevation-z8 ">
+        <div class="row">
+
+          <div class="col-sm">
+            <h3>
+              {{title}}
+            </h3>
+          </div>
+        </div>
+
+        <hr class="my-4">
+        <h4 class="text-left" *ngIf="identity">
+          Welcome: {{identity.name}} {{identity.surname}}
+        </h4>
+        <br>
+        <!--Carousel Wrapper-->
+        <div id="carousel-example-2" class="carousel slide carousel-fade mat-elevation-z20" data-ride="carousel">
+          <!--Indicators-->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-2" data-slide-to="1"></li>
+            <li data-target="#carousel-example-2" data-slide-to="2"></li>
+          </ol>
+          <!--/.Indicators-->
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <div class="view">
+                <img class="d-block w-100" src="assets/cat.jpg" alt="First slide">
+                <div class="mask rgba-black-light"></div>
+              </div>
+              <div class="carousel-caption">
+                <h3 class="h3-responsive ">Identity</h3>
+                <p>Can be identified via QR</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <!--Mask color-->
+              <div class="view">
+                <img class="d-block w-100" src="assets/dog.jpg" alt="Second slide">
+                <div class="mask rgba-black-strong"></div>
+              </div>
+              <div class="carousel-caption">
+                <h3 class="h3-responsive">Grooming</h3>
+                <p>Find your grooming services</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <!--Mask color-->
+              <div class="view">
+                <img class="d-block w-100" src="assets/horse.jpg" alt="Third slide">
+                <div class="mask rgba-black-slight"></div>
+              </div>
+              <div class="carousel-caption">
+                <h3 class="h3-responsive">Care & Protect</h3>
+                <p>Medical resume online</p>
+              </div>
+            </div>
+          </div>
+          <!--/.Slides-->
+          <!--Controls-->
+          <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          <!--/.Controls-->
+        </div>
+        <!--/.Carousel Wrapper-->
+        <hr class="my-4">
+
+        <div class="container text-center  text-dark offset-4">
+          <div class="row ">
+            <div class="col-1">
+              <a href="https://www.facebook.com/Sunny-Hostals-261669591256712/"><i
+                  class="fab fa-facebook-f  text-dark"></i></a>
+            </div>
+            <div class="col-1">
+
+              <a href="https://www.instagram.com/misael_jr76/"><i class="fab fa-instagram  text-dark"
+                  aria-hidden="true"></i>
+              </a>
+            </div>
+            <div class="col-1">
+
+              <a href="https://twitter.com/Sunnyhostals1"><i class="fab fa-twitter   text-dark" aria-hidden="true"></i>
+              </a>
+            </div>
+            <div class="col-1">
+
+              <a href="https://www.linkedin.com/in/misael-jimenez-345b11172/"><i class="fab fa-linkedin-in  text-dark "
+                  aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <button *ngIf="identity" matTooltip="Information" matTooltipPosition="left"
+    class="floating3 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
+    routerLink="/edit-user">
+    <mat-icon class="icon_help">info</mat-icon>
+  </button>
+  <button *ngIf="identity" matTooltip="Edit user & pet" matTooltipPosition="left"
+    class="floating2 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
+    routerLink="/edit-user">
+    <mat-icon class="icon_help">edit</mat-icon>
+  </button>
+  <button *ngIf="identity" matTooltip="Messages" matTooltipPosition="left"
+    class="floating1 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18" type="button">
+    <mat-icon class="icon_help">message</mat-icon>
+  </button>
+
+  <button *ngIf="identity" matTooltip="Help" matTooltipPosition="left"
+    class="floating mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18" type="button">
+    <mat-icon class="icon_help">help_outline</mat-icon>
+  </button>
+
+
+
+
+</div>

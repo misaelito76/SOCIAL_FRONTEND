@@ -1,0 +1,174 @@
+<div class="container">
+  <br><br><br><br>
+  <div class="e card mat-elevation-z20">
+    <div class="card-title  mat-display-1">
+      <mat-divider></mat-divider>
+      <br>
+      <h1 class="text-center text-dark">{{title}}</h1>
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+      <h5 class="text-center offset-0">
+        <u>User's description</u>
+      </h5>
+      <br />
+
+    </div>
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-13">
+      <mat-form-field class="col-sm-4">
+        <input matInput type="text" placeholder="Name:" name="name" [(ngModel)]="user.name" required />
+
+        <mat-icon matSuffix class="md-light">perm_identity</mat-icon>
+        <mat-hint>Is your name</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-4">
+        <input matInput type="text" placeholder="Surname:" name="surname" [(ngModel)]="user.surname" required />
+
+        <mat-icon matSuffix class="md-light">star_border</mat-icon>
+        <mat-hint>Is your surname</mat-hint>
+      </mat-form-field>
+
+
+      <mat-form-field class="col-sm-4">
+        <input matInput type="text" placeholder="Email:" name="email" [(ngModel)]="user.email" required />
+
+        <mat-icon matSuffix class="md-light">alternate_email</mat-icon>
+        <mat-hint>Is required your email</mat-hint>
+      </mat-form-field>
+
+
+      <br /><br />
+      <mat-divider></mat-divider>
+      <br />
+      <h5 class="text-center offset-0">
+        <u>Pet's description</u>
+      </h5>
+      <br />
+      <mat-divider></mat-divider>
+      <br>
+      <mat-form-field class="col-sm-3">
+        <input matInput type="text" placeholder="Pet Name:" name="petName" [(ngModel)]="user.petName" />
+
+        <mat-icon matSuffix class="md-light">local_offer</mat-icon>
+        <mat-hint>Is required your Pet name</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="col-sm-3">
+        <input matInput type="text" placeholder="Animal class :" name="animal" [(ngModel)]="user.animal" />
+
+        <mat-icon matSuffix class="md-light">star</mat-icon>
+        <mat-hint>Is your pet a: ex dog, Cat etc</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="col-sm-3">
+        <input matInput type="text" placeholder="Age:" name="age" [(ngModel)]="user.age" />
+
+        <mat-icon matSuffix class="md-light">cake</mat-icon>
+        <mat-hint>How old is your pet?</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-3">
+        <input matInput type="text" placeholder="Race:" name="race" [(ngModel)]="user.race" />
+
+        <mat-icon matSuffix class="md-light">style</mat-icon>
+        <mat-hint>Ex. if dog (pitbull, Shepperd)</mat-hint>
+
+      </mat-form-field>
+      <br>
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+      <mat-form-field class="col-sm-3 ">
+        <input matInput type="text" placeholder="sex:" name="sex" [(ngModel)]="user.sex" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+        <mat-icon matSuffix class="md-light">star_border</mat-icon>
+        <mat-hint>Pet's sex</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="col-sm-3">
+        <input matInput type="text" placeholder="Allergies:" name="allergies" [(ngModel)]="user.allergies" />
+
+        <mat-icon matSuffix class="md-light">warning</mat-icon>
+        <mat-hint class="text-danger">Don't forget allergies!</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="col-sm-3">
+        <input matInput type="text" placeholder="Food preference:" name="meals" [(ngModel)]="user.meals" />
+
+        <mat-icon matSuffix class="md-light">restaurant</mat-icon>
+        <mat-hint>Food most liked</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="col-sm-3">
+        <input matInput type="text" placeholder="Address:" name="address" [(ngModel)]="user.address" />
+
+        <mat-icon matSuffix class="md-light">location_on</mat-icon>
+        <mat-hint>Type your adress</mat-hint>
+      </mat-form-field>
+      <br>
+      <br>
+      <mat-divider></mat-divider><br>
+
+      <mat-form-field class="col-sm-3">
+        <input matInput type="text" placeholder="Mobile:" name="mobile" [(ngModel)]="user.mobile" />
+
+        <mat-icon matSuffix class="md-light">phone</mat-icon>
+        <mat-hint>locating you just in case</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="col-sm-3">
+        <ngx-mat-file-input #removableInput type="file" name="image" [(ngModel)]="image"
+          (change)="onSelectFile($event); fileChangeEvent($event)" placeholder="Photo:">
+        </ngx-mat-file-input>
+
+        &nbsp;
+
+        <img *ngIf="!removableInput.empty" class="logo_preview max-width:2%" [src]="urlPreview" />
+
+        &nbsp;
+
+        <button mat-icon-button *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
+          <mat-icon>clear</mat-icon>
+        </button>
+
+        &nbsp;
+
+        <mat-icon matSuffix class="icon_mod">add_photo_alternate</mat-icon>
+
+      </mat-form-field>
+      <mat-form-field class="col-sm-3">
+        <input matInput type="text" placeholder="Status:" name="status" [(ngModel)]="user.status" />
+
+        <mat-icon matSuffix class="md-light">flag</mat-icon>
+        <mat-hint>Is your pet lost?</mat-hint>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="col-sm-3">
+        <textarea matInput type="text" placeholder="Comments:" name="comments" [(ngModel)]="user.comments"></textarea>
+
+        <mat-icon matSuffix class="md-light">info</mat-icon>
+        <mat-hint>Extra info </mat-hint>
+      </mat-form-field><br><br>
+
+      <mat-divider></mat-divider>
+      <br>
+
+      <div class=" text-center ">
+        <button  matTooltip=" Update profile" matTooltipPosition="above"type="submit" mat-raised-button class="border border-dark  btn btn-light btn-lg" color="silver"
+          [disabled]="!registerForm.valid"><i class="material-icons">
+update
+</i></button>
+      </div>
+      <br>
+
+    </form>
+    <div class="card card-footer text-center bg-silver">
+      <br>
+      <h5>if you dont't need update you can go back to <a routerLink="/home">home page</a></h5>
+      <br>
+    </div>
+  </div>
+  <br>
+</div>
