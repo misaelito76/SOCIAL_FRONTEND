@@ -2,17 +2,17 @@
 <div class=" container">
   <!--FIRST COL-->
 
-
-
-      <div class="card text-center mat-elevation-z20">
-        <h6>
+  <div class="card text-center mat-elevation-z20">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>
           <br />
           <i class=" h6 material-icons">
             pets
           </i>
           {{ _secondTitle }}
-        </h6>
-
+        </h4>
+        <br />
         <div *ngIf="spinner == 'false'">
           <div class="offset-6 ">
             <mat-spinner class="text-dark" [diameter]="30"></mat-spinner>
@@ -21,18 +21,41 @@
         <!-- CARD USERS -->
         <div *ngIf="spinner == 'true'">
           <mat-accordion *ngFor="let user of users">
-            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false"
+            >
               <mat-expansion-panel-header>
-                <img class="img border border-dark " id="avatar" src="{{ url + 'get-image-user/' + user.image }}"
-                  *ngIf="user.image" />
-                <img class="img border border-dark" id="avatar" src="assets/user.jpg" *ngIf="!user.image" />
+                <img
+                  class="img border border-dark "
+                  id="avatar1"
+                  src="{{ url + 'get-image-user/' + user.image }}"
+                  *ngIf="user.image"
+                />
+                <img
+                  class="img border border-dark"
+                  id="avatar1"
+                  src="assets/user.jpg"
+                  *ngIf="!user.image"
+                />
                 <mat-panel-title id="center">
-                  <h5 [routerLink]="['/profile',user._id]"routerLinkActive="active">
-                  <i *ngIf="user===user._id"   class="material-icons text-success">
-            pets
-          </i>
-                    <button class="btn btn-transparent " matTooltip="{{user.petName}}'s Profile " matTooltipPosition="right"> {{user.name}}</button>
-                   
+                  <h5
+                    [routerLink]="['/profile', user._id]"
+                    routerLinkActive="active"
+                  >
+                    <i
+                      *ngIf="user === user._id"
+                      class="material-icons text-success"
+                    >
+                      pets
+                    </i>
+                    <button
+                      class="btn btn-transparent "
+                      matTooltip="{{ user.petName }}'s Profile "
+                      matTooltipPosition="right"
+                    >
+                      {{ user.name }}
+                    </button>
                   </h5>
                 </mat-panel-title>
                 <mat-panel-description id="center">
@@ -49,32 +72,46 @@
                     <h6><b>Name:</b> {{ user.petName }}</h6>
                     <h6><b>Age:</b> {{ user.age }}</h6>
 
-
-
                     <br />
                   </div>
                   <div class="col-sm-6">
-                    <img class="img-thumbnail mat-elevation-z8" style=" margin-top:6%"
-                      src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user && user.image" />
-                    <img class="img-thumbnail mat-elevation-z8" style="width:100% " src="assets/user.jpg"
-                      *ngIf="!user.image" />
+                    <img
+                      class="img-thumbnail mat-elevation-z8"
+                      style=" margin-top:6%"
+                      src="{{ url + 'get-image-user/' + user.image }}"
+                      *ngIf="user && user.image"
+                    />
+                    <img
+                      class="img-thumbnail mat-elevation-z8"
+                      style="width:100% "
+                      src="assets/user.jpg"
+                      *ngIf="!user.image"
+                    />
                   </div>
                   <div class="pull-right" *ngIf="user._id != identity._id">
-                    <button matTooltip="Follow this user " matTooltipPosition="above" id="button"
-                      class="btn btn-transparent border-success" *ngIf="follows.indexOf(user._id)<0"
-                      (click)="followUser(user._id)">
+                    <button
+                      matTooltip="Follow this user "
+                      matTooltipPosition="above"
+                      id="button"
+                      class="btn btn-transparent border-success"
+                      *ngIf="follows.indexOf(user._id) < 0"
+                      (click)="followUser(user._id)"
+                    >
                       <i class="material-icons text-success offset-1">
                         check_circle
                       </i>
-
                     </button>
-                    <button matTooltip="Unfollow this user " matTooltipPosition="above"
-                      class="btn btn-light border-danger text-left" id="button" *ngIf="follows.indexOf(user._id)>=0 "
-                      (click)="unfollowUser(user._id)">
+                    <button
+                      matTooltip="Unfollow this user "
+                      matTooltipPosition="above"
+                      class="btn btn-light border-danger text-left"
+                      id="button"
+                      *ngIf="follows.indexOf(user._id) >= 0"
+                      (click)="unfollowUser(user._id)"
+                    >
                       <i class="material-icons text-danger offset-1">
                         cancel
                       </i>
-
                     </button>
                   </div>
                 </div>
@@ -84,23 +121,172 @@
           </mat-accordion>
         </div>
 
-
         <div class="footer">
-          <br>
+          <br />
           <div class="row">
             <div class="col-sm-6">
-              <span><a class="text-secondary" routerLink="#"> <i class="material-icons">
+              <span
+                ><a class="text-secondary" routerLink="#">
+                  <i class="material-icons">
                     fast_rewind
-                  </i></a></span> </div>
+                  </i></a
+                ></span
+              >
+            </div>
             <div class="col-sm-6">
-              <span><a class="text-secondary" routerLink="#"><i class="material-icons">
+              <span
+                ><a class="text-secondary" routerLink="#"
+                  ><i class="material-icons">
                     fast_forward
-                  </i></a></span>
-
+                  </i></a
+                ></span
+              >
             </div>
           </div>
-          <br>
+          <br />
         </div>
       </div>
- 
+      <div class="col-sm-6">
+        <br />
+
+        <H4>Posts</H4>
+        <br />
+        <div class="card">
+          <form
+            #newPubForm="ngForm"
+            (ngSubmit)="onSubmit(newPubForm)"
+            class="col-sm-10 color-dark offset-1"
+          >
+            <mat-form-field class="example-full-width col-sm-9">
+              <textarea
+                name="text"
+                #text="ngModel"
+                [(ngModel)]="publication.text"
+                matInput
+                placeholder="New post today?"
+              ></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="col-sm-3">
+              <ngx-mat-file-input
+                #removableInput
+                type="file"
+                name="image"
+                [(ngModel)]="image"
+                (change)="onSelectFile($event); fileChangeEvent($event)"
+                placeholder="Pic:"
+              >
+              </ngx-mat-file-input>
+
+              &nbsp;
+
+              <img
+                *ngIf="!removableInput.empty"
+                class="logo_preview max-width:0,5%"
+                [src]="urlPreview"
+              />
+
+              &nbsp;
+
+              <button
+                mat-icon-button
+                *ngIf="!removableInput.empty"
+                (click)="removableInput.clear($event)"
+              >
+                <mat-icon>clear</mat-icon>
+              </button>
+
+              &nbsp;
+
+              <mat-icon matSuffix class="icon_mod"
+                >add_photo_alternate</mat-icon
+              >
+            </mat-form-field>
+            <div class="text-center">
+              <button
+                matTooltip=" Update profile"
+                matTooltipPosition="above"
+                type="submit"
+                class=" upload btn btn-lightborder border-dark  btn btn-light text-center "
+                color="silver"
+                [disabled]="!newPubForm.form.valid"
+              >
+                <i class="material-icons">
+                  cloud_upload
+                </i>
+              </button>
+            </div>
+            <br />
+          </form>
+          <br />
+          <div class="text-center">
+            <h4>Posts:</h4>
+          </div>
+          <div *ngFor="let publication of publications">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="text-left">
+                  <img
+                    class="img-thumbnail border border-dark"
+                    id="avatar"
+                    src="{{ url + 'get-image-user/' + publication.user.image }}"
+                    *ngIf="publication.user.image"
+                  />
+                  <img
+                    class="img-thumbnail border border-dark"
+                    id="avatar"
+                    src="assets/user.jpg"
+                    *ngIf="!publication.user.image"
+                  />
+
+                  <a id="avatar">{{
+                    publication.user.name + " " + publication.user.surname
+                  }}</a>
+                </h5>
+              </div>
+              <div class="card-body">
+                <h6>
+                  {{ publication.text }}
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          matTooltip="Notifications"
+          matTooltipPosition="left"
+          class="floating3 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
+          routerLink="/edit-user"
+        >
+          <mat-icon class="icon_help">notification_important</mat-icon>
+        </button>
+        <button
+          matTooltip="Settings"
+          matTooltipPosition="left"
+          class="floating2 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
+          routerLink="/edit-user"
+        >
+          <mat-icon class="icon_help">settings</mat-icon>
+        </button>
+        <button
+          matTooltip="Messages"
+          matTooltipPosition="left"
+          class="floating1 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
+          type="button"
+        >
+          <mat-icon class="icon_help">message</mat-icon>
+        </button>
+
+        <button
+          matTooltip="Help"
+          matTooltipPosition="left"
+          class="floating mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
+          type="button"
+        >
+          <mat-icon class="icon_help">help_outline</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

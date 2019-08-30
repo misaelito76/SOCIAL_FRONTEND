@@ -1,36 +1,160 @@
+#avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 100px;
+  overflow: hidden;
+  margin-right: 8px;
+  margin-top: 14px;
+}
+#center {
+  margin-top: 18px;
+}
+#button {
+  margin-left: 2%;
+  width: 110%;
+  height: 85%;
+}
 
-  #avatar{
-    width: 35px;
-    height:35px;
-    border-radius: 100px;
-    overflow:hidden;
-    margin-right:8px;
-    margin-top:14px
+.img-thumbnail:hover {
+  transition-duration: 2s;
+  border-radius: 50%;
 }
-#center{
-  margin-top:18px
+#spin {
+  color: black;
 }
-#button{
-  margin-left:2% ;
-  width:110%;
-  height:85%
+.card {
+  border-radius: 10px;
+}
+.img {
+  width: 90px;
+  height: 90px;
+}
+.card {
+  border-radius: 10px;
+}
+.jumbotron {
+  border-radius: 30px;
+}
+.floating {
+  border-radius: 100px;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  margin: 0.2rem;
+  width: 1%;
+}
+.floating1 {
+  position: fixed;
+  bottom: 60px;
+  right: 0px;
+  margin: 0.2rem;
+  width: 1%;
 }
 
-.img-thumbnail:hover{
-  
-  transition-duration:2s;
-  border-radius:50%
+.floating2 {
+  position: fixed;
+  bottom: 120px;
+  right: 0px;
+  margin: 0.2rem;
+  width: 1%;
 }
-#spin{
-  color:black
+.floating3 {
+  position: fixed;
+  bottom: 180px;
+  right: 0px;
+  margin: 0.2rem;
+  width: 1%;
 }
-.card{
-    border-radius:10px
+.icon_help {
+  margin-top: 3px !important;
+}
+
+.mat-fab {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 800px) {
+  .popup1 {
+    display: block;
   }
-  .img{
-    width:90px;
-     height:90px
+}
+
+@media (min-width: 800px) {
+  .popup1 {
+    display: none;
   }
+}
+.upload {
+  border-radius: 10px;
+}
 
+#avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 100px;
+  overflow: hidden;
+  margin-right: 8px;
+  margin-top: 14px;
+}
+#avatar1 {
+  width: 35px;
+  height: 35px;
+  border-radius: 100px;
+  overflow: hidden;
+  margin-right: 8px;
+  margin-top: 14px;
+}
+#center {
+  margin-top: 18px;
+}
+#button {
+  margin-left: 2%;
+  width: 110%;
+  height: 85%;
+}
 
- 
+.img-thumbnail:hover {
+  transition-duration: 2s;
+  border-radius: 50%;
+}
+#spin {
+  color: black;
+}
+.card {
+  border-radius: 10px;
+}
+.img {
+  width: 90px;
+  height: 90px;
+}
+
+#avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 100px;
+  overflow: hidden;
+  margin-right: 8px;
+  margin-top: 0px;
+}
+img:hover {
+  transform: scale(1.3);
+  transition-duration: 1s;
+}
+div.img-thumbnail:hover {
+  filter: greyscale(100%);
+}
+
+.floating {
+  size: 2rem;
+  border: 1;
+}
+
+.separator {
+  flex: 1 1 auto;
+}
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}

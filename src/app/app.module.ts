@@ -10,7 +10,7 @@ import { AppRoutingModule } from '../app/navbar/app-routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import * as $ from 'jquery';
 import {
 
   MatToolbarModule,
