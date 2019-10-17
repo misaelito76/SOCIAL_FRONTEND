@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core/src/core';
 
-import { NavbarComponent } from './navbar.component';
+import { NavbarComponent } from './navbar.component';y
+y
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -8,7 +10,8 @@ describe('NavbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [ NavbarComponent ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
