@@ -1,5 +1,5 @@
 <div class="container">
-  <br /><br /><br />
+  <br ><br ><br>
   <div class="r card mat-elevation-z8">
     <div class="card-title  mat-display-0">
       <mat-divider></mat-divider>
@@ -10,99 +10,61 @@
       <br />
       <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-13">
         <mat-horizontal-stepper labelPosition="bottom" #stepper>
+
           <mat-step [stepControl]="firstFormGroup">
             <form #name="ngForm" [formGroup]="firstFormGroup">
               <ng-template matStepLabel>Name:</ng-template>
-              <br />
+              <br>
               <div class="card  mat-elevation-z20 col-sm-12">
-                <br />
+                <br>
                 <mat-form-field>
-                  <br />
-                  <input
-                    matInput
-                    placeholder="First name"
-                    formControlName="firstCtrl"
-                    name="name"
-                    [(ngModel)]="user.name"
-                    required
-                  />
+                  <br>
+                  <input matInput placeholder="First name" formControlName="firstCtrl" name="name"
+                    [(ngModel)]="user.name" required>
                   <mat-icon matSuffix class="md-light">perm_identity</mat-icon>
                   <mat-hint>Type your name</mat-hint>
+
                 </mat-form-field>
                 <hr class="my-4" />
                 <div class="text-center">
-                  <button
-                    matTooltip="Next step "
-                    matTooltipPosition="above"
-                    class="border border-dark mat-elevation-z20 btn btn-light btn-lg"
-                    color="dark"
-                    [disabled]="!name.valid"
-                    type="button"
-                    mat-button
-                    matStepperNext
-                  >
-                    <i class="material-icons">
+                  <button matTooltip="Next step " matTooltipPosition="above"
+                    class="border border-dark mat-elevation-z20 btn btn-light btn-lg" color="dark"
+                    [disabled]="!name.valid" type="button" mat-button matStepperNext><i class="material-icons">
                       navigate_next
-                    </i>
-                  </button>
-                </div>
-                <br />
+                    </i></button>
+                </div><br>
               </div>
             </form>
           </mat-step>
           <mat-step [stepControl]="secondFormGroup">
             <form #surname="ngForm" [formGroup]="secondFormGroup">
               <ng-template matStepLabel>Last:</ng-template>
-              <br />
+              <br>
               <div class="card mat-elevation-z20 col-sm-12">
-                <br />
+                <br>
                 <mat-form-field>
-                  <br />
-                  <input
-                    matInput
-                    placeholder="Last name"
-                    formControlName="secondCtrl"
-                    name="surname"
-                    [(ngModel)]="user.surname"
-                    required
-                  />
+                  <br>
+                  <input matInput placeholder="Last name" formControlName="secondCtrl" name="surname"
+                    [(ngModel)]="user.surname" required>
                   <mat-icon matSuffix class="md-light">people_outline</mat-icon>
                   <mat-hint>Is your last name</mat-hint>
+
                 </mat-form-field>
                 <hr class="my-4" />
                 <div class="row">
                   <div class="col text-left ">
-                    <button
-                      matTooltip="Previous "
-                      matTooltipPosition="above"
-                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg"
-                      color="dark"
-                      type="button"
-                      mat-button
-                      matStepperPrevious
-                    >
-                      <i class="material-icons">
+                    <button  matTooltip="Previous " matTooltipPosition="above"
+                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg" color="dark" type="button"
+                      mat-button matStepperPrevious><i class="material-icons">
                         navigate_before
-                      </i>
-                    </button>
-                  </div>
-                  <br /><br />
+                      </i></button></div><br><br>
                   <div class="col text-right">
-                    <button
-                      matTooltip="Next step "
-                      matTooltipPosition="above"
-                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg"
-                      color="dark"
-                      [disabled]="!surname.valid"
-                      type="button"
-                      mat-button
-                      matStepperNext
-                    >
-                      <i class="material-icons">
+
+                    <button matTooltip="Next step " matTooltipPosition="above"
+                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg" color="dark"
+                      [disabled]="!surname.valid" type="button" mat-button matStepperNext><i class="material-icons">
                         navigate_next
-                      </i>
-                    </button>
-                  </div>
+                      </i></button></div>
                 </div>
               </div>
             </form>
@@ -110,58 +72,31 @@
           <mat-step [stepControl]="thirdFormGroup">
             <form #email="ngForm" [formGroup]="thirdFormGroup">
               <ng-template matStepLabel>Email:</ng-template>
-              <br />
+              <br>
               <div class="card  mat-elevation-z20 col-sm-12">
-                <br />
+                <br>
                 <mat-form-field>
-                  <br />
-                  <input
-                    matInput
-                    placeholder="Email"
-                    formControlName="thirdCtrl"
-                    name="email"
-                    [(ngModel)]="user.email"
-                    required
-                  />
-                  <mat-icon matSuffix class="md-light"
-                    >alternate_email</mat-icon
-                  >
+                  <br>
+                  <input matInput placeholder="Email" formControlName="thirdCtrl" name="email" [(ngModel)]="user.email"
+                    required>
+                  <mat-icon matSuffix class="md-light">alternate_email</mat-icon>
                   <mat-hint>Email address</mat-hint>
                 </mat-form-field>
                 <hr class="my-4" />
                 <div class="row">
                   <div class="col text-left">
-                    <button
-                      matTooltip="Previous "
-                      matTooltipPosition="above"
-                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg"
-                      color="dark"
-                      type="button"
-                      mat-button
-                      matStepperPrevious
-                    >
-                      <i class="material-icons">
+                    <button matTooltip="Previous " matTooltipPosition="above"
+                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg" color="dark" type="button"
+                      mat-button matStepperPrevious><i class="material-icons">
                         navigate_before
-                      </i>
-                    </button>
-                  </div>
+                      </i></button></div>
                   <div class="col text-right">
-                    <button
-                      matTooltip="Next step "
-                      matTooltipPosition="above"
-                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg"
-                      color="dark"
-                      [disabled]="!email.valid"
-                      type="button"
-                      mat-button
-                      matStepperNext
-                    >
-                      <i class="material-icons">
+
+                    <button matTooltip="Next step " matTooltipPosition="above"
+                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg" color="dark"
+                      [disabled]="!email.valid" type="button" mat-button matStepperNext><i class="material-icons">
                         navigate_next
-                      </i>
-                    </button>
-                  </div>
-                  <br /><br />
+                      </i></button></div><br><br>
                 </div>
               </div>
             </form>
@@ -169,121 +104,80 @@
           <mat-step [stepControl]="fourthFormGroup">
             <form #pass="ngForm" [formGroup]="fourthFormGroup">
               <ng-template matStepLabel>Pass:</ng-template>
-              <br />
+              <br>
               <div class="card  mat-elevation-z20 col-sm-12">
-                <br />
+                <br>
                 <mat-form-field>
-                  <br />
-                  <input
-                    type="password"
-                    matInput
-                    placeholder="Password"
-                    formControlName="fourthCtrl"
-                    name="password"
-                    [(ngModel)]="user.password"
-                    required
-                  />
+                  <br>
+                  <input type="password" matInput placeholder="Password" formControlName="fourthCtrl" name="password"
+                    [(ngModel)]="user.password" required>
                   <mat-icon matSuffix class="md-light">lock_open</mat-icon>
                   <mat-hint>Type a password:</mat-hint>
                 </mat-form-field>
                 <hr class="my-4" />
                 <div class="row">
                   <div class="col text-left">
-                    <button
-                      matTooltip="Previous "
-                      matTooltipPosition="above"
-                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg"
-                      color="dark"
-                      type="button"
-                      mat-button
-                      matStepperPrevious
-                    >
-                      <i class="material-icons">
+                    <button matTooltip="Previous " matTooltipPosition="above"
+                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg" color="dark" type="button"
+                      mat-button matStepperPrevious><i class="material-icons">
                         navigate_before
-                      </i>
-                    </button>
-                  </div>
+                      </i></button></div>
                   <div class="col text-right">
-                    <button
-                      matTooltip="Next step"
-                      matTooltipPosition="above"
-                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg"
-                      color="dark"
-                      [disabled]="!pass.valid"
-                      type="button"
-                      mat-button
-                      matStepperNext
-                    >
-                      <i class="material-icons">
+
+                    <button matTooltip="Next step" matTooltipPosition="above"
+                      class="border border-dark mat-elevation-z20 btn btn-light btn-lg" color="dark"
+                      [disabled]="!pass.valid" type="button" mat-button matStepperNext><i class="material-icons">
                         navigate_next
-                      </i>
-                    </button>
-                  </div>
-                  <br /><br />
+                      </i></button></div><br><br>
                 </div>
               </div>
             </form>
           </mat-step>
+
 
           <mat-step>
             <ng-template matStepLabel>Done</ng-template>
             <div class="card mat-elevation-z20 col-sm-12">
               <div class=" row ">
                 <div class="col-sm-12 text-center">
-                  <br />
-                  <h3>Let's go!</h3>
-                  <i class=" text-center" class="material-icons  ">
+                  <br>
+                  <h3>Let's go!</h3> <i class=" text-center" class="material-icons  ">
                     sentiment_very_satisfied
                   </i>
                 </div>
+
               </div>
 
               <hr class="my-4" />
 
               <div class="row text-center ">
                 <div class="col ">
-                  <button
-                    matTooltip="Previous"
-                    matTooltipPosition="above"
-                    mat-button
-                    matStepperPrevious
-                  >
-                    <i class="material-icons">
+                  <button matTooltip="Previous" matTooltipPosition="above" mat-button matStepperPrevious><i
+                      class="material-icons">
                       navigate_before
-                    </i>
-                  </button>
+                    </i></button>
                 </div>
                 <div class="col">
-                  <button
-                    matTooltip="Submit form"
-                    matTooltipPosition="above"
-                    type="submit"
-                    mat-raised-button
-                    class="border border-dark mat-elevation-z20 btn btn-light btn-lg"
-                    color="dark"
-                    [disabled]="!registerForm.valid"
-                  >
+                  <button matTooltip="Submit form" matTooltipPosition="above" type="submit" mat-raised-button
+                    class="border border-dark mat-elevation-z20 btn btn-light btn-lg" color="dark"
+                    [disabled]="!registerForm.valid">
                     <i class="material-icons">
                       public
                     </i>
                   </button>
                 </div>
                 <div class="col ">
-                  <button
-                    matTooltip="Undo form"
-                    matTooltipPosition="above"
-                    mat-button
-                    (click)="stepper.reset()"
-                  >
-                    <i class="material-icons  ">
+                  <button matTooltip="Undo form" matTooltipPosition="above" mat-button (click)="stepper.reset()"> <i
+                      class="material-icons  ">
                       redo
-                    </i>
-                  </button>
+                    </i></button>
                 </div>
+
               </div>
-              <br />
+              <br>
             </div>
           </mat-step>
+
         </mat-horizontal-stepper>
       </form>
     </div>
@@ -297,4 +191,3 @@
     </div>
   </div>
   <br />
-</div>

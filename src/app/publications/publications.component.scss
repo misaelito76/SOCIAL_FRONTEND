@@ -1,121 +1,95 @@
-.card {
-  border-radius: 10px;
+.card{
+    margin-top: 15%;
+    border-radius:10px
+  }.jumbotron{
+    border-bottom-left-radius:30px
+  }
+  .form-control{
+          border-radius:15px
+
+  }
+  .color-dark,.upload{
+      margin-left:25px
+  }
+ 
+  .floating {
+          border-radius:100px;
+    position: fixed;
+    bottom: 250px;
+    right: 0px;
+    margin: .200rem;
+    width:1%
 }
-.jumbotron {
-  border-radius: 30px;
+#avatar{
+    width: 35px;
+    height:35px;
+    border-radius: 100px;
+    overflow:hidden;
+    margin-right:8px;
+    margin-bottom:24px
+    
 }
-.floating {
-  border-radius: 100px;
-  position: fixed;
-  bottom: 0px;
-  right: 0px;
-  margin: 0.2rem;
-  width: 1%;
+.text-grey{
+    margin-left: 60px;
 }
-.floating1 {
-  position: fixed;
-  bottom: 60px;
-  right: 0px;
-  margin: 0.2rem;
-  width: 1%;
+.text-dark{
+    margin-left: 60px;
+}
+  #avatar{
+    width: 35px;
+    height:35px;
+    border-radius: 100px;
+    overflow:hidden;
+    margin-right:8px;
+    margin-top:24px
+}
+ .floating1 {
+    position: fixed;
+    bottom: 60px;
+    right: 0px;
+    margin: .200rem;
+    width:1%
 }
 
-.floating2 {
-  position: fixed;
-  bottom: 120px;
-  right: 0px;
-  margin: 0.2rem;
-  width: 1%;
+ .floating2 {
+    position: fixed;
+    bottom: 120px;
+    right: 0px;
+    margin: .200rem;
+    width:1%
 }
-.floating3 {
-  position: fixed;
-  bottom: 180px;
-  right: 0px;
-  margin: 0.2rem;
-  width: 1%;
+ .floating3 {
+    position: fixed;
+    bottom: 180px;
+    right: 0px;
+    margin: .200rem;
+    width:1%
 }
 .icon_help {
-  margin-top: 3px !important;
+    margin-top: 3px !important;
+    
 }
+
 
 .mat-fab {
-  width: 30px;
-  height: 30px;
+    width: 30px;
+    height: 30px;
 }
 
+
 @media (max-width: 800px) {
-  .popup1 {
-    display: block;
-  }
+    .popup1 {
+        display: block;
+    }
+
 }
 
 @media (min-width: 800px) {
-  .popup1 {
-    display: none;
+    .popup1 {
+        display: none;
+    }
+
+}  .upload{
+    border-radius:10px
   }
-}
-.upload {
-  border-radius: 10px;
-}
-
-#avatar {
-  width: 35px;
-  height: 35px;
-  border-radius: 100px;
-  overflow: hidden;
-  margin-right: 8px;
-  margin-top: 14px;
-}
-#center {
-  margin-top: 18px;
-}
-#button {
-  margin-left: 2%;
-  width: 110%;
-  height: 85%;
-}
-
-.img-thumbnail:hover {
-  transition-duration: 2s;
-  border-radius: 50%;
-}
-#spin {
-  color: black;
-}
-.card {
-  border-radius: 10px;
-}
-.img {
-  width: 90px;
-  height: 90px;
-}
-
-#avatar {
-  width: 35px;
-  height: 35px;
-  border-radius: 100px;
-  overflow: hidden;
-  margin-right: 8px;
-  margin-top: 0px;
-}
-img:hover {
-  transform: scale(1.3);
-  transition-duration: 1s;
-}
-div.img-thumbnail:hover {
-  filter: greyscale(100%);
-}
-
-.floating {
-  size: 2rem;
-  border: 1;
-}
-
-.separator {
-  flex: 1 1 auto;
-}
-.example-fill-remaining-space {
-  /* This fills the remaining space, by using flexbox. 
-     Every toolbar row uses a flexbox row layout. */
-  flex: 1 1 auto;
-}
+ 

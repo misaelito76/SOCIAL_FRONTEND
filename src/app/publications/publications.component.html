@@ -1,144 +1,110 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="card"></div>
+ <div class="container">
+
+  <cdk-virtual-scroll-viewport  style="height: 1000px" itemSize="5"
+ *ngIf="spinner == 'true'">
+  <div class="card" *cdkVirtualFor="let pub of totalPub, let i =index">
+
+    <div class="card-header text-left">
+
+      <h4><img class=" img border border-dark " id="avatar" src="{{ url + 'get-image-user/' + pub.user.image }}"
+          *ngIf="pub.user.image" />{{pub.user.petName }}</h4>
+      
+      <p class="text-grey ">{{pub.user.animal }}</p>
+    </div>
+    <div class=" card-body text-left col-lg-12">
+      <h4>{{pub.text}}</h4>
+           <br>
+          <mat-divider></mat-divider>
+          <br>
+          <div class="text-center col-lg-12">
+            <img class=" img-thumbnail text-center col-lg-12"  src="{{url + 'get-image-pub/' + pub.file}}"
+            *ngIf="identity && identity.image"></div>
+            <br>
+               <mat-divider></mat-divider>
+<br><div class="row text-center">
+  <div class="col-sm-4">
+    <i class="material-icons">
+thumb_up
+</i>
+  </div>
+   <div class="col-sm-4">
+<i class="material-icons">
+forum
+</i>
+  </div>
+   <div class="col-sm-4">
+    <i class="material-icons">
+message
+</i>
+  </div>
+</div>
+<br>
+    <mat-divider></mat-divider>
+<br>
     </div>
   </div>
+   <mat-toolbar class="bg-white mat-elevation-z8 fixed-bottom">
+  <img class="img-thumbnail border border-dark" id="avatar" src="{{url + 'get-image-user/' + identity.image}}"
+            *ngIf="identity && identity.image">
+    <form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm)" class=" color-dark  ">
+
+
+ 
+          
+<div class="input-group">
+  
+  <input name="text" #text="ngModel" [(ngModel)]="publication.text"class="form-control" placeholder="What do you have in mind......" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">   
+        <input   type="file" 
+          (change)="fileChangeEvent($event)" >
+
+    <button matTooltip="New post" matTooltipPosition="above" type="submit"
+          class=" upload btn btn-lightborder    " color="silver"  (click)="onSubmit()"
+          [disabled]="!newPubForm.form.valid"><i class="material-icons">
+            pets
+          </i></button>
+  </div>
+</div>
+
+     </form>
+       <button class=" btn btn-white text-grey"  (click)="viewMore()" *ngIf="!noMore"><i class="material-icons">
+                    fast_forward
+                  </i></button>
+     </mat-toolbar>
+
   <div class="card">
-    <div class="card-header">
-      <H3>Posts</H3>
-    </div>
 
-    <form
-      #newPubForm="ngForm"
-      (ngSubmit)="onSubmit(newPubForm)"
-      class="col-sm-10 color-dark offset-1"
-    >
-      <mat-form-field class="example-full-width col-sm-6">
-        <textarea
-          name="text"
-          #text="ngModel"
-          [(ngModel)]="publication.text"
-          matInput
-          placeholder="New post today?"
-        ></textarea>
-      </mat-form-field>
 
-      <mat-form-field class="col-sm-6">
-        <ngx-mat-file-input
-          #removableInput
-          type="file"
-          name="image"
-          [(ngModel)]="image"
-          (change)="onSelectFile($event); fileChangeEvent($event)"
-          placeholder="Photo:"
-        >
-        </ngx-mat-file-input>
 
-        &nbsp;
 
-        <img
-          *ngIf="!removableInput.empty"
-          class="logo_preview max-width:2%"
-          [src]="urlPreview"
-        />
+    <button matTooltip="Notifications" matTooltipPosition="left"
+      class="floating3 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
+      routerLink="/edit-user">
+      <mat-icon class="icon_help">notification_important</mat-icon>
+    </button>
+    <button matTooltip="Settings" matTooltipPosition="left"
+      class="floating2 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
+      routerLink="/edit-user">
+      <mat-icon class="icon_help">settings</mat-icon>
+    </button>
+    <button matTooltip="Messages" matTooltipPosition="left"
+      class="floating1 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18" type="button">
+      <mat-icon class="icon_help">message</mat-icon>
+    </button>
 
-        &nbsp;
+    <button matTooltip="Help" matTooltipPosition="left"
+      class="floating mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18" type="button">
+      <mat-icon class="icon_help">help_outline</mat-icon>
+    </button>
 
-        <button
-          mat-icon-button
-          *ngIf="!removableInput.empty"
-          (click)="removableInput.clear($event)"
-        >
-          <mat-icon>clear</mat-icon>
-        </button>
 
-        &nbsp;
-
-        <mat-icon matSuffix class="icon_mod">add_photo_alternate</mat-icon>
-      </mat-form-field>
-      <div class="text-center">
-        <button
-          matTooltip=" Update profile"
-          matTooltipPosition="above"
-          type="submit"
-          class=" upload btn btn-lightborder border-dark  btn btn-light text-center "
-          color="silver"
-          [disabled]="!newPubForm.form.valid"
-        >
-          <i class="material-icons">
-            cloud_upload
-          </i>
-        </button>
-      </div>
-      <br />
-    </form>
-    <br />
-    <div class="text-center">
-      <h1>Posts:</h1>
-    </div>
-    <div *ngFor="let publication of publications">
-      <div class="card">
-        <div class="card-header">
-          <h3>
-            <img
-              class="img-thumbnail border border-dark"
-              id="avatar"
-              src="{{ url + 'get-image-user/' + publication.user.image }}"
-              *ngIf="user.image"
-            />
-            <img
-              class="img-thumbnail border border-dark"
-              id="avatar"
-              src="assets/user.jpg"
-              *ngIf="!publication.user.image"
-            />
-
-            <a id="avatar">{{
-              publication.user.name + " " + publication.user.surname
-            }}</a>
-          </h3>
-        </div>
-        <div class="card-body">
-          <h4>
-            {{ publication.text }}
-          </h4>
-        </div>
-      </div>
-    </div>
   </div>
 
-  <button
-    matTooltip="Notifications"
-    matTooltipPosition="left"
-    class="floating3 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
-    routerLink="/edit-user"
-  >
-    <mat-icon class="icon_help">notification_important</mat-icon>
-  </button>
-  <button
-    matTooltip="Settings"
-    matTooltipPosition="left"
-    class="floating2 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
-    routerLink="/edit-user"
-  >
-    <mat-icon class="icon_help">settings</mat-icon>
-  </button>
-  <button
-    matTooltip="Messages"
-    matTooltipPosition="left"
-    class="floating1 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
-    type="button"
-  >
-    <mat-icon class="icon_help">message</mat-icon>
-  </button>
 
-  <button
-    matTooltip="Help"
-    matTooltipPosition="left"
-    class="floating mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
-    type="button"
-  >
-    <mat-icon class="icon_help">help_outline</mat-icon>
-  </button>
+        <div *ngIf="spinner == 'false'">
+          <div class="offset-6 ">
+            <mat-spinner class="text-dark" [diameter]="30"></mat-spinner>
+          </div>
+        </div>
+        </cdk-virtual-scroll-viewport >
 </div>

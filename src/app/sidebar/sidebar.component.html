@@ -1,136 +1,99 @@
-<div id="avatar" class=" mat-elevation-z8">
+<div id="avatar"class=" mat-elevation-z8">
   <div class="row">
-    <div class="col-sm-12">
-      <h2>
+    <div class="header col-sm-4">
+    <h2>
         <i class=" h1 material-icons text-left">
           pets
         </i>
         {{ user.petName }}
       </h2>
-      <img
-        class="img-thumbnail"
-        style="width:100% "
-        src="{{ url + 'get-image-user/' + user.image }}"
-        *ngIf="user && user.image"
-      />
-      <img
-        class="img-thumbnail"
-        style="width:100% "
-        src="assets/user.jpg"
-        *ngIf="!user.image"
-      />
-    </div>
+  <img
+    class="img-thumbnail"
+    style="width:100% "
+    src="{{ url + 'get-image-user/' + user.image }}"
+    *ngIf="user && user.image"
+  />
+  <img
+    class="img-thumbnail"
+    style="width:100% "
+    src="assets/user.jpg"
+    *ngIf="!user.image"
+  />
   </div>
+      
+        </div>
+
 
   <div class="card-footer  " *ngIf="stats">
-    <br />
-    <div id="br" class="">
-      <div class="row">
-        <div class="col-sm-4 ">
-          <a>
-            <span>
-              <b>Following : </b>
-            </span>
-            <span class="badge badge-secondary">
-              <u> {{ stats.following }} </u>
-            </span>
-          </a>
-        </div>
-        <div class="col-sm-4">
-          <a>
-            <span>
-              <b>Followers : </b>
-            </span>
-            <span class="badge badge-secondary">
-              <u> {{ stats.followed }} </u>
-            </span>
-          </a>
-        </div>
-        <div class="col-sm-4">
-          <a>
-            <span>
-              <b>My stories : </b>
-            </span>
-            <span class="badge badge-secondary">
-              <u> {{ stats.publications }} </u>
-            </span>
-          </a>
-        </div>
-      </div>
-    </div>
-    <button
-      matTooltip="Lost Pet!"
-      matTooltipClass="danger"
-      matTooltipPosition="left"
-      class="floating3 mat-fab mat-raised mat-mini mat-danger text-danger bg-dark mat-elevation-z18"
-      routerLink="/pet-lost"
-    >
-      <mat-icon class="icon_help">outlined_flag</mat-icon>
-    </button>
-    <button
-      matTooltip="Edit profile"
-      matTooltipPosition="left"
-      class="floating2 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
-      routerLink="/edit-user"
-    >
-      <mat-icon class="icon_help">edit</mat-icon>
-    </button>
-    <button
-      matTooltip="Pets care"
-      matTooltipPosition="left"
-      class="floating1 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
-      type="button"
-    >
-      <mat-icon class="icon_help">local_hospital</mat-icon>
-    </button>
+     <br>
+    <div id="br"class="">
+     
+    <div class="row">
+      <div class="col-sm-4 ">
+<a >
+  <span>
+    <b>Following : </b>
+  </span>
+<span class="badge badge-secondary">
+    <u> {{stats.following}} </u>
+  </span>
+</a>
 
-    <button
-      matTooltip="Dog walkers"
-      matTooltipPosition="left"
-      data-toggle="modal"
-      data-target="#exampleModal"
-      class="floating mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
-      type="button"
-    >
-      <mat-icon class="icon_help">directions_walk</mat-icon>
-    </button>
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title offset-4" id="exampleModalLabel">
-              Modal title
-            </h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary offset-8"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-          </div>
-        </div>
+
+</div>
+    <div class="col-sm-4">
+<a >
+  <span>
+    <b>Follows :  </b>
+  </span>
+<span class="badge badge-secondary">
+    <u> {{stats.followed}} </u>
+  </span>
+</a>
+</div>
+    <div class="col-sm-4">
+<a >
+  <span>
+    <b>Stories: </b>
+  </span>
+<span class="badge badge-secondary">
+    <u> {{stats.publications}} </u>
+  </span>
+</a>
+</div>
+</div>
+  </div>
+   <button matTooltip="Lost Pet!"  matTooltipClass="danger" matTooltipPosition="left" class="floating3 mat-fab mat-raised mat-mini mat-danger text-danger bg-dark mat-elevation-z18"  routerLink="/pet-lost"  >
+  <mat-icon class="icon_help">outlined_flag</mat-icon>
+</button>
+<button matTooltip="Edit profile" matTooltipPosition="left" 
+class="floating2 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"  routerLink="/edit-user"  >
+  <mat-icon class="icon_help">edit</mat-icon>
+</button>
+<button matTooltip="Pets care" matTooltipPosition="left" class="floating1 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"   type="button">
+  <mat-icon class="icon_help">local_hospital</mat-icon>
+</button>
+
+<button matTooltip="Dog walkers" matTooltipPosition="left"   data-toggle="modal" data-target="#exampleModal" class="floating mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"   type="button" >
+  <mat-icon class="icon_help">directions_walk</mat-icon>
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title offset-4" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary offset-8" data-dismiss="modal">Close</button>
+      
       </div>
     </div>
   </div>
+</div>
 </div>

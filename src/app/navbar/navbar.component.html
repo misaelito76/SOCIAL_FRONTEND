@@ -1,131 +1,109 @@
-<mat-toolbar
-  *ngIf="!identity"
-  class="bg-white mat-elevation-z8 fixed-top"
-  color="white"
->
+
+<mat-toolbar *ngIf="!identity" class="bg-white mat-elevation-z8 fixed-top" color="white">
   <span>Petsbook</span>
 
   <!-- This fills the remaining space of the current row -->
 
-  <span class="example-fill-remaining-space"> </span>
 
-  <span
-    class="nav-item"
-    *ngIf="
-      _router.url != '/home' ||
-      _router.url === '/login' ||
-      _router.url === '/register'
-    "
-  >
-    <a class=" nav-link text-dark" routerLink="/home" routerLinkActive="active"
-      ><i class="material-icons">
-        home
-      </i>
-    </a>
-  </span>
-  <span class=" nav-item ">
-    <a
-      class=" nav-link text-dark "
-      *ngIf="identity && _router.url != '/timeline'"
-      routerLink="/timeline"
-    >
-      <i class="material-icons text-dark">
-        timeline
-      </i>
-    </a>
+
+
+  <span class="example-fill-remaining-space">
+
   </span>
 
+        <span class="nav-item" *ngIf="_router.url!='/home'||_router.url==='/login'|| _router.url==='/register'">
+        <a class=" nav-link text-dark" routerLink="/home" routerLinkActive="active"><i class="material-icons">
+            home
+          </i> </a>
+
+      </span>
+        <span class=" nav-item ">
+        <a class=" nav-link text-dark "*ngIf="identity &&_router.url!='/timeline' " routerLink="/timeline"> <i class="material-icons text-dark">
+            timeline
+          </i>
+
+
+        </a>
+      </span>
+
+
   <span class=" nav-item ">
-    <a
-      class=" nav-link text-dark "
-      *ngIf="!identity && _router.url === '/home'"
-      routerLink="register"
-    >
-      <i class="material-icons text-success">
-        pets
-      </i>
-    </a>
-  </span>
+        <a class=" nav-link text-dark "*ngIf="!identity &&_router.url==='/home' " routerLink="register"> <i class="material-icons text-success">
+            pets
+          </i>
+
+
+        </a>
+      </span>
+
+
+  
 </mat-toolbar>
 <!--**********************************************************************************************************************-->
 
-<mat-toolbar
-  *ngIf="identity"
-  class="bg-white mat-elevation-z8 fixed-top"
-  color="white"
->
+<mat-toolbar *ngIf="identity" class="bg-white mat-elevation-z8 fixed-top" color="white">
   <span>Petsbook</span>
 
   <!-- This fills the remaining space of the current row -->
 
-  <span class="example-fill-remaining-space"> </span>
-  <span>
-    <a
-      class=" text-dark "
-      [routerLink]="['/profile', identity._id]"
-      routerLinkActive="active"
-    >
-      <img
-        class="img-thumbnail border border-dark"
-        id="avatar"
-        src="{{ url + 'get-image-user/' + identity.image }}"
-        *ngIf="identity && identity.image"
-      />
-      <img
-        class="img-thumbnail border border-dark"
-        id="avatar"
-        src="assets/user.jpg"
-        *ngIf="!identity.image"
-      />
-      {{ identity.name }} {{ identity.surname }}</a
-    >
+
+
+
+  <span class="example-fill-remaining-space">
+
   </span>
-  <span
-    class="nav-item"
-    *ngIf="
-      _router.url != '/home' ||
-      _router.url === '/login' ||
-      _router.url === '/register'
-    "
-  >
-    <a class=" nav-link text-dark" routerLink="/home" routerLinkActive="active"
-      ><mat-icon matTooltip="home" matTooltipPosition="left">home</mat-icon>
-    </a>
+        <span>
+    <a  class=" text-dark " [routerLink]="['/profile',identity._id]" routerLinkActive="active">
+          <img class="img-thumbnail border border-dark" id="avatar" src="{{url + 'get-image-user/' + identity.image}}"
+            *ngIf="identity && identity.image">
+          <img class="img-thumbnail border border-dark" id="avatar" src="assets/user.jpg" *ngIf=" !identity.image">
+          {{identity.name}} {{identity.surname}}</a>
+
+
+
+
   </span>
+        <span class="nav-item" *ngIf="_router.url!='/home'||_router.url==='/login'|| _router.url==='/register'">
+        <a class=" nav-link text-dark" routerLink="/home" routerLinkActive="active"><mat-icon
+ matTooltip="home" matTooltipPosition="left">home</mat-icon>
+          
+           </a>
+
+      </span>
+              <span class="nav-item" *ngIf="identity&&_router.url!='/publications'">
+        <a class=" nav-link text-dark" routerLink="/publications" routerLinkActive="active"><mat-icon
+ matTooltip="home" matTooltipPosition="left">publish</mat-icon>
+          
+           </a>
+
+      </span>
+        <span class=" nav-item ">
+        <a class=" nav-link text-dark "*ngIf="identity &&_router.url!='/timeline' " routerLink="/timeline"> <i class="material-icons text-dark">
+            timeline
+          </i>
+
+
+        </a>
+      </span>
+
 
   <span class=" nav-item ">
-    <a
-      class=" nav-link text-dark "
-      *ngIf="identity && _router.url != '/timeline'"
-      routerLink="/timeline"
-    >
-      <i class="material-icons text-dark">
-        timeline
-      </i>
-    </a>
-  </span>
+        <a class=" nav-link text-dark "*ngIf="!identity &&_router.url==='/home' "
+         routerLink="login"> <i class="material-icons text-success">
+            pets
+          </i>
 
-  <span class=" nav-item ">
-    <a
-      class=" nav-link text-dark "
-      *ngIf="!identity && _router.url === '/home'"
-      routerLink="login"
-    >
-      <i class="material-icons text-success">
-        pets
-      </i>
-    </a>
-  </span>
-  <span class=" nav-item ">
-    <a
-      class=" nav-link text-dark "
-      *ngIf="identity"
-      (click)="logout()"
-      routerLink="/home"
-    >
-      <i class="material-icons text-danger">
-        pets
-      </i>
-    </a>
-  </span>
+
+        </a>
+      </span>
+        <span class=" nav-item ">
+        <a class=" nav-link text-dark "*ngIf="identity" (click)="logout()" routerLink="/home"> <i class="material-icons text-danger">
+            pets
+          </i>
+
+
+        </a>
+      </span>
+
+  
 </mat-toolbar>

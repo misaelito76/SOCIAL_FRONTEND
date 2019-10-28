@@ -10,7 +10,9 @@ import { AppRoutingModule } from '../app/navbar/app-routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import * as $ from 'jquery';
+import {MatDividerModule} from '@angular/material/divider';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
 import {
 
   MatToolbarModule,
@@ -92,7 +94,8 @@ const routes: Routes = [
 
 
   ],
-  imports: [
+  imports: [    ScrollingModule,
+
     BrowserModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
@@ -100,6 +103,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled'
     }),
+    MatDividerModule,
     MatToolbarModule,
     MatButtonModule,
     MatAutocompleteModule,

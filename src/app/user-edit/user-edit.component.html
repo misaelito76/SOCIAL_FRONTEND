@@ -123,6 +123,7 @@
 
         &nbsp;
 
+        <img *ngIf="!removableInput.empty" class="logo_preview max-width:2%" [src]="urlPreview" />
 
         &nbsp;
 
@@ -155,7 +156,8 @@
       <br>
 
       <div class=" text-center ">
-        <button  matTooltip=" Update profile" matTooltipPosition="above"type="submit" mat-raised-button class="border border-dark  btn btn-light btn-lg" color="silver"
+        <button  matTooltip=" Update profile" matTooltipPosition="above"
+        type="submit" mat-raised-button class="border border-dark  btn btn-light btn-lg" color="silver"
           [disabled]="!registerForm.valid"><i class="material-icons">
 update
 </i></button>
