@@ -78,12 +78,13 @@
       <mat-divider></mat-divider>
       <br>
       <mat-form-field class="col-sm-3 ">
-        <input matInput type="text" placeholder="sex:" name="sex" [(ngModel)]="user.sex" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of options" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
+        <input matInput type="text" placeholder="sex:" name="sex" [(ngModel)]="user.sex" aria-label="Number" matInput
+          [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
         <mat-icon matSuffix class="md-light">star_border</mat-icon>
         <mat-hint>Pet's sex</mat-hint>
       </mat-form-field>
@@ -156,11 +157,11 @@
       <br>
 
       <div class=" text-center ">
-        <button  matTooltip=" Update profile" matTooltipPosition="above"
-        type="submit" mat-raised-button class="border border-dark  btn btn-light btn-lg" color="silver"
-          [disabled]="!registerForm.valid"><i class="material-icons">
-update
-</i></button>
+        <button matTooltip=" Update profile" matTooltipPosition="above" type="submit" mat-raised-button
+          class="border border-dark  btn btn-light btn-lg" color="silver" [disabled]="!registerForm.valid"><i
+            class="material-icons">
+            update
+          </i></button>
       </div>
       <br>
 

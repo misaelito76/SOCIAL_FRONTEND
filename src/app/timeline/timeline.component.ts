@@ -31,7 +31,7 @@ export class TimelineComponent implements OnInit, DoCheck {
 	public status;
 	public follows;
 	public stats;
-    public itemsPerPage;
+	public itemsPerPage;
 
 	constructor(
 		private _userService: UserService,
@@ -52,39 +52,39 @@ export class TimelineComponent implements OnInit, DoCheck {
 		this.identity = this._userService.getIdentity();
 		this.stats = this._userService.getStats()
 		this.url = GLOBAL.url
-			this.getUsers(this.page);
+		this.getUsers(this.page);
 		//console.log(this.identity);
 		//console.log('timeline is loading');
 
 	}
-	
+
 
 	// GET USERS
 	public spinner = 'false';
 
-	getUsers(page,adding=false) {//paginaccion
-		this._userService.getUsers( page).subscribe(
+	getUsers(page, adding = false) {//paginaccion
+		this._userService.getUsers(page).subscribe(
 			response => {
 				//console.log(response.users)
 				if (response.users) {
-						this.spinner = 'true';
+					this.spinner = 'true';
 					this.total = response.total;
 					this.pages = response.pages;
 					this.follows = response.users_following;
-					this.itemsPerPage=response.items_per_page//paginaccion
+					this.itemsPerPage = response.items_per_page//paginaccion
 
-					if(!adding){//paginaccion
-					this.users = response.users;//paginaccion
+					if (!adding) {//paginaccion
+						this.users = response.users;//paginaccion
 
-					}else{//paginaccion
-					var arrA=this.users//paginaccion
-                    var arrB=response.users//paginaccion
-					this.users=arrA.concat(arrB)//paginaccion
+					} else {//paginaccion
+						var arrA = this.users//paginaccion
+						var arrB = response.users//paginaccion
+						this.users = arrA.concat(arrB)//paginaccion
 					}//paginaccion
 
-					
+
 				} else {
-									this.status = 'error';
+					this.status = 'error';
 
 				}
 			},
@@ -152,17 +152,17 @@ export class TimelineComponent implements OnInit, DoCheck {
 				}
 			}
 		);
-	
+
 	}
-		public noMore= false;//pagination
-		viewMore(){
-			if(this.users.length==(this.total-this.itemsPerPage)){
-this.noMore=true
-			}else{
-				this.page+=1
-			}
-			this.getUsers(this.page,true)
-		}//pagination
+	public noMore = false;//pagination
+	viewMore() {
+		if (this.users.length == (this.total - this.itemsPerPage)) {
+			this.noMore = true
+		} else {
+			this.page += 1
+		}
+		this.getUsers(this.page, true)
+	}//pagination
 
 
 	ngDoCheck() {

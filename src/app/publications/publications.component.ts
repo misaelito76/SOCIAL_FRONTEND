@@ -103,7 +103,7 @@ export class PublicationsComponent implements OnInit, DoCheck {
 	getUsers(page) {
 		this._userService.getUsers(page).subscribe(
 			response => {
-				//console.log(response.users)
+				//console.log(response.users) 
 				if (!response.users) {
 					this.status = 'error';
 				} else {

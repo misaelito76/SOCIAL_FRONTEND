@@ -1,4 +1,4 @@
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../models/user';
@@ -8,9 +8,9 @@ import { FollowService } from '../services/follow.service';
 import { GLOBAL } from '../services/global';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+	selector: 'app-sidebar',
+	templateUrl: './sidebar.component.html',
+	styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
 	public title: string;
@@ -21,8 +21,8 @@ export class SidebarComponent implements OnInit {
 	public stats;
 	public url;
 	public follow;
-  public following;
-  public followed;
+	public following;
+	public followed;
 
 	constructor(
 		private _route: ActivatedRoute,
@@ -36,17 +36,17 @@ export class SidebarComponent implements OnInit {
 		this.url = GLOBAL.url;
 		this.followed = false;
 		this.following = false;
-    this.stats = this._userService.getStats()
-		this.user = new User("","","","","","","ROLE_USER",
-		"","","","","","","","","","","","","","");
+		this.stats = this._userService.getStats()
+		this.user = new User("", "", "", "", "", "", "ROLE_USER",
+			"", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
 
 	}
 
-	
+
 
 	ngOnInit() {
-    console.log('sidebar is loading');
+		console.log('sidebar is loading');
 		this.loadPage();
 	}
 
@@ -65,16 +65,16 @@ export class SidebarComponent implements OnInit {
 				if (response.user) {
 					console.log(response);
 					this.user = response.user;
-if(response.following && response.following._id){
-	this.following=true;
-}else{
-	this.following =false
-}
-if(response.followed && response.followed._id){
-	this.followed =true;
-}else{
-	this.followed =false
-}
+					if (response.following && response.following._id) {
+						this.following = true;
+					} else {
+						this.following = false
+					}
+					if (response.followed && response.followed._id) {
+						this.followed = true;
+					} else {
+						this.followed = false
+					}
 
 				} else {
 					this.status = 'error';
@@ -83,7 +83,7 @@ if(response.followed && response.followed._id){
 			error => {
 				console.log(<any>error);
 				this._router.navigate(['/profile', this.identity._id])
-				
+
 			}
 		);
 	}

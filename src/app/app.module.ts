@@ -10,7 +10,7 @@ import { AppRoutingModule } from '../app/navbar/app-routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import {
@@ -94,7 +94,7 @@ const routes: Routes = [
 
 
   ],
-  imports: [    ScrollingModule,
+  imports: [ScrollingModule,
 
     BrowserModule,
     MatProgressSpinnerModule,
