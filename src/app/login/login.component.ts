@@ -7,11 +7,11 @@ import { UserService } from '../services/user.service';
 	selector: 'login',
 	templateUrl: './login.component.html',
 	providers: [UserService]
-})
-export class LoginComponent implements OnInit {
-	public title: string;
-	public user: User;
-	public status: string;
+}) 
+export class LoginComponent implements OnInit{
+	public title:string;
+	public user:User;
+	public status:string;
 	public identity;
 	public token;
 
@@ -19,36 +19,36 @@ export class LoginComponent implements OnInit {
 		private _route: ActivatedRoute,
 		private _router: Router,
 		private _userService: UserService
-	) {
+	){
 		this.title = 'Sign in';
-		this.user = new User("", "", "", "", "", "", "ROLE_USER", "");
+		this.user = new User("","","","","","","ROLE_USER","");
 	}
 
-	ngOnInit() {
+	ngOnInit(){
 	}
 
-	onSubmit(loginForm) {
+	onSubmit(loginForm){
 		this._userService.signUp(this.user).subscribe(
 			response => {
 				this.identity = response.user;
 
 				console.log(this.identity);
 
-				if (!this.identity || !this.identity._id) {
+				if(!this.identity || !this.identity._id){
 					this.status = 'error';
-				} else {
+				}else{
 					localStorage.setItem('identity', JSON.stringify(this.identity));
 
 					this.getToken();
 					loginForm.reset();
 				}
-
+				
 			},
 			error => {
 				var errorMessage = <any>error;
 				console.log(errorMessage);
 
-				if (errorMessage != null) {
+				if(errorMessage != null){
 					this.status = 'error';
 				}
 			}
@@ -56,39 +56,39 @@ export class LoginComponent implements OnInit {
 	}
 
 
-	getToken() {
+	getToken(){
 		this._userService.signUp(this.user, 'true').subscribe(
 			response => {
 				this.token = response.token;
-
+				
 				console.log(this.token);
 
-				if (this.token.length <= 0) {
+				if(this.token.length <= 0){
 					this.status = 'error';
-				} else {
-
-					localStorage.setItem('token', this.token);
+				}else{
+					
+					localStorage.setItem('token',this.token);
 					this._router.navigate(['timeline']);
 				}
-
+				
 			},
 			error => {
 				var errorMessage = <any>error;
 				console.log(errorMessage);
 
-				if (errorMessage != null) {
+				if(errorMessage != null){
 					this.status = 'error';
 				}
 			}
 		);
 	}
 
-	getCounters() {
+	getCounters(){
 		this._userService.getCounters().subscribe(
 			response => {
 				localStorage.setItem('stats', JSON.stringify(response));
 				this.status = 'success';
-
+				
 			},
 			error => {
 				console.log(<any>error);
@@ -99,8 +99,8 @@ export class LoginComponent implements OnInit {
 
 
 
-	ngDoCheck() {
-		this.identity = this._userService.getIdentity();//*DoCheck refresh screen after this change
-
-	}
+  ngDoCheck() {
+    this.identity = this._userService.getIdentity();//*DoCheck refresh screen after this change
+   
+ }
 }

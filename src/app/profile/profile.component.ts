@@ -9,7 +9,6 @@ import { GLOBAL } from '../services/global';
 @Component({
 	selector: 'app-profile',
 	templateUrl: './profile.component.html',
-	providers: [UserService, FollowService]
 })
 export class ProfileComponent implements OnInit {
 	public title: string;
@@ -36,14 +35,18 @@ export class ProfileComponent implements OnInit {
 		this.followed = false;
 		this.following = false;
 		this.url = GLOBAL.url
-		this.user = new User("", "", "", "", "", "", "ROLE_USER",
-			"", "", "", "", "", "", "", "", "", "", "", "", "", "");
+        this.user = new User("","","","","","","ROLE_USER",
+		"","","","","","","","","","","","","","");
+
+
 	}
 
+
+
 	ngOnInit() {
-		console.log('profile.component is loading!!');
-		this.loadPage();
-		this.identity = this._userService.getIdentity();
+		this.loadPage();	 
+		 this.identity = this._userService.getIdentity();
+
 	}
 
 	loadPage() {

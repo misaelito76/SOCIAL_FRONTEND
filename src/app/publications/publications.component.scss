@@ -11,6 +11,9 @@
   .color-dark,.upload{
       margin-left:25px
   }
+  .publications{
+      margin-top:200px
+  }
  
   .floating {
           border-radius:100px;
@@ -25,9 +28,22 @@
     height:35px;
     border-radius: 100px;
     overflow:hidden;
-    margin-right:8px;
     margin-bottom:24px
     
+}
+.virtual{
+}
+.sidebar{
+  margin-top:20px
+}
+.sidebar1{
+  margin-left:120px;
+    margin-top:90px
+
+}
+
+.publications{
+    margin-top:40px
 }
 .text-grey{
     margin-left: 60px;
@@ -43,9 +59,10 @@
     margin-right:8px;
     margin-top:24px
 }
+
  .floating1 {
     position: fixed;
-    bottom: 60px;
+    bottom: 80px;
     right: 0px;
     margin: .200rem;
     width:1%

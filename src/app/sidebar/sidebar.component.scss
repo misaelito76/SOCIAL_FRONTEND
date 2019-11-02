@@ -1,5 +1,5 @@
 .header{
-margin-left:30%;
+margin-left:3%;
 }#avatar{
   width:70%;
     border-radius: 10px;
@@ -7,6 +7,24 @@ margin-left:30%;
     margin-right:8px;
     margin-top:3px;
     align-items:center
+}
+.form-control{
+    float:left;
+}
+
+.img-thumbnail-bottom{
+    width: 35px;
+    height:35px;
+    border-radius: 100px;
+    overflow:hidden;
+      margin-left:1px;
+    margin-top:3px  
+}
+.pubsend{
+    margin-left:20px
+}
+.new{
+    margin-left:2px
 }
 .img-thumbnail{
         margin-bottom:8px;

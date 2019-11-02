@@ -34,7 +34,7 @@ export class PublicationsComponent implements OnInit, DoCheck {
 	public follows;
 	public stats;
 	public user: User;
-    public itemsPerPage;
+	public itemsPerPage;
 	public totalPub: Publication[];
 	public publication: Publication;
 
@@ -52,9 +52,7 @@ export class PublicationsComponent implements OnInit, DoCheck {
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;
 		this.publication = new Publication("", "", "", "", this.identity._id);
-		this.page = 1;
 		this.identity = this._userService.getIdentity();
-		this.stats = this._userService.getStats()
 		this.url = GLOBAL.url
 
 	}
@@ -67,150 +65,39 @@ export class PublicationsComponent implements OnInit, DoCheck {
 
 	ngOnInit() {
 
-		this.actualPage();
 		this.url = GLOBAL.url
 
 		this.identity = this._userService.getIdentity();
+		this.getPublications()
 
 	}
-	actualPage() {
-		this._route.params.subscribe(params => {
-			let page = +params['page'];
-			this.page = page;
+	reload(event) {
+		this.getPublications()
 
-			if (!params['page']) {
-				page = 1;
-			}
-
-			if (!page) {
-				page = 1;
-			} else {
-				this.next_page = page + 1;
-				this.prev_page = page - 1;
-
-				if (this.prev_page <= 0) {
-					this.prev_page = 1;
-				}
-			}
-
-			this.getUsers(page);
-			this.getPublications(this.page)
-
-		});
 	}
 	public spinner = 'false';
 
-	getUsers(page) {
-		this._userService.getUsers(page).subscribe(
-			response => {
-				//console.log(response.users) 
-				if (!response.users) {
-					this.status = 'error';
-				} else {
-					this.spinner = 'true';
-					this.total = response.total;
-					this.users = response.users;
-					this.pages = response.pages;
-					this.follows = response.users_following;
-					console.log(this.users);
-
-					/*if (page > this.pages) {
-						this._router.navigate(['/gente', 1]);
-					}*/
-				}
-			},
-			error => {
-				var errorMessage = <any>error;
-				console.log(errorMessage);
-
-				if (errorMessage != null) {
-					this.status = 'error';
-				}
-			}
-		);
-	}
-
-	public followUserOver;
-	mouseEnter(user_id) {
-		this.followUserOver = user_id;
-	}
-
-	mouseLeave(user_id) {
-		this.followUserOver = 0;
-	}
-
-	followUser(followed) {
-		var follow = new Follow('', this.identity._id, followed);
-
-		this._followService.addFollow(this.token, follow).subscribe(
-			response => {
-				if (!response.follow) {
-					this.status = 'error';
-				} else {
-					this.status = 'success';
-					this.follows.push(followed);
-					localStorage.setItem('stats', JSON.stringify(response))
-				}
-				//localStorage.setItem('stats', JSON.stringify(response));
-
-			},
-			error => {
-				var errorMessage = <any>error;
-				console.log(errorMessage);
-
-				if (errorMessage != null) {
-					this.status = 'error';
-				}
-			}
-		);
-	}
-
-		
-	unfollowUser(followed) {
-		this._followService.deleteFollow(this.token, followed).subscribe(
-			response => {
-				var search = this.follows.indexOf(followed);
-				if (search != -1) {
-					this.follows.splice(search, 1);
-					localStorage.removeItem('stats');
-				}
-			},
-			error => {
-				var errorMessage = <any>error;
-				console.log(errorMessage);
-
-				if (errorMessage != null) {
-					this.status = 'error';
-				}
-			}
-		);
-	}
-
-
+	
 	ngDoCheck() {
 		this.identity = this._userService.getIdentity();//*DoCheck refresh screen after this change
 
 	}
 
 
-	getPublications(page,adding=false) {
-		this._publicationService.getPublications(this.token, page).subscribe(response => {
+	getPublications() {
+		this._publicationService.getPublications(this.token).subscribe(response => {
 			console.log(response)
 			if (response.Publications) {
-			   this.spinner = 'true';
-			   this.total=response.Total_items;
-			   this.itemsPerPage=response.items_per_page//paginaccion
+				this.spinner = 'true';
+				this.total = response.Total_items;
+				this.itemsPerPage = response.items_per_page//paginaccion
 				this.pages = response.Pages
-				if (!adding) {
 				this.totalPub = response.Publications
-				
-			} else{	var arrA=this.totalPub//paginaccion
-                    var arrB=response.Publications//paginaccion
-					this.totalPub=arrA.concat(arrB)//paginaccion
-					//p
-				
+				this.status = 'success';
+
+
 			}
-			}
+
 		}, error => {
 			var errorMessage = <any>error;
 			console.log(errorMessage);
@@ -220,15 +107,7 @@ export class PublicationsComponent implements OnInit, DoCheck {
 
 		})
 	}
-		public noMore= false;//pagination
-		viewMore(){
-			if(this.totalPub.length==(this.pages)){
-this.noMore=true
-			}else{
-				this.page+=1
-			}
-			this.getPublications(this.page,true)
-		}//pagination
+
 
 
 	//Upload select file;
@@ -243,25 +122,26 @@ this.noMore=true
 			response => {
 				if (response.publication) {
 
-						this._uploadService.makeFileRequest(this.url +
+					this._uploadService.makeFileRequest(this.url +
 						'upload-image-pub/' + response.publication._id, [], this.filesToUpload, this.token, 'image')
 						.then((result: any) => {
 							this.publication.file = result.image;
-																		                             form.reset()
 
 							this.status = 'success';
 							this.total = response.total_items
+							//form.reset()
 
 						})
 
 				}
-		
+
 				else {
-				
+
 					this.status = 'error'
 
 
 				}
+
 
 			},
 			error => {
@@ -276,7 +156,7 @@ this.noMore=true
 
 
 	}
-	
+
 
 }
 

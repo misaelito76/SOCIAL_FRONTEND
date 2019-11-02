@@ -8,7 +8,6 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { User } from '../models/user';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
 @Component({
 	selector: 'app-timeline',
 	templateUrl: './timeline.component.html',
@@ -32,20 +31,29 @@ export class TimelineComponent implements OnInit, DoCheck {
 	public follows;
 	public stats;
 	public itemsPerPage;
+	public user: User;
+	public follow;
+	public following;
+	public followed;
 
 	constructor(
 		private _userService: UserService,
 		private _followService: FollowService,
-
 		private _route: ActivatedRoute,
 		private _router: Router,
+
 
 	) {
 		this.title = `Pet's world`;
 		this._secondTitle = `Connections`
 		this.token = this._userService.getToken();
 		this.url = GLOBAL.url;
-		this.stats = this._userService.getStats()
+		this.stats = this._userService.getStats();
+		this.identity = this._userService.getIdentity();
+		this.followed = false;
+		this.following = false;
+		this.user = new User("", "", "", "", "", "", "ROLE_USER",
+			"", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
 	}
 	ngOnInit() {
@@ -53,34 +61,79 @@ export class TimelineComponent implements OnInit, DoCheck {
 		this.stats = this._userService.getStats()
 		this.url = GLOBAL.url
 		this.getUsers(this.page);
-		//console.log(this.identity);
-		//console.log('timeline is loading');
+		this.loadPage();
 
+	}
+	
+
+	loadPage() {
+		this._route.params.subscribe(params => {
+			let id = params['id'];
+
+			this.getUser(id);
+			this.getCounters(id);
+		});
+	}
+
+	getUser(id) {
+		this._userService.getUser(id).subscribe(
+			response => {
+				if (response.user) {
+					console.log(response);
+					this.user = response.user;
+					if (response.following && response.following._id) {
+						this.following = true
+					} else {
+						this.following = false
+					}
+					if (response.followed && response.followed._id) {
+						this.followed = true
+					} else {
+						this.followed = false
+					}
+
+				} else {
+					this.status = 'error';
+				}
+			},
+			error => {
+				console.log(<any>error);
+				//this._router.navigate(['/timeline', this.identity._id])
+
+			}
+		);
+	}
+
+	getCounters(id) {
+		this._userService.getCounters(id).subscribe(
+			response => {
+				this.stats = response;
+			},
+			error => {
+				console.log(<any>error);
+			}
+		);
 	}
 
 
 	// GET USERS
 	public spinner = 'false';
 
-	getUsers(page, adding = false) {//paginaccion
+	getUsers(page) {//paginaccion
 		this._userService.getUsers(page).subscribe(
 			response => {
 				//console.log(response.users)
 				if (response.users) {
 					this.spinner = 'true';
+										this.status = 'success';
+
 					this.total = response.total;
 					this.pages = response.pages;
 					this.follows = response.users_following;
 					this.itemsPerPage = response.items_per_page//paginaccion
-
-					if (!adding) {//paginaccion
 						this.users = response.users;//paginaccion
 
-					} else {//paginaccion
-						var arrA = this.users//paginaccion
-						var arrB = response.users//paginaccion
-						this.users = arrA.concat(arrB)//paginaccion
-					}//paginaccion
+			
 
 
 				} else {
@@ -154,15 +207,7 @@ export class TimelineComponent implements OnInit, DoCheck {
 		);
 
 	}
-	public noMore = false;//pagination
-	viewMore() {
-		if (this.users.length == (this.total - this.itemsPerPage)) {
-			this.noMore = true
-		} else {
-			this.page += 1
-		}
-		this.getUsers(this.page, true)
-	}//pagination
+
 
 
 	ngDoCheck() {

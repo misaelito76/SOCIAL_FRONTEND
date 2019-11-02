@@ -10,9 +10,9 @@ import { AppRoutingModule } from '../app/navbar/app-routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatDividerModule } from '@angular/material/divider';
+import {MatDividerModule} from '@angular/material/divider';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-
+import { MomentModule } from 'angular2-moment'
 import {
 
   MatToolbarModule,
@@ -91,11 +91,14 @@ const routes: Routes = [
     SidebarComponent,
     PublicationsComponent,
     PostsComponent,
+    
 
 
   ],
-  imports: [ScrollingModule,
+  imports: [    
 
+       MomentModule,
+    ScrollingModule,
     BrowserModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
@@ -133,7 +136,7 @@ const routes: Routes = [
 
   ],
   providers: [UserService, UploadService, FollowService, PublicationService],
-  exports: [MatInputModule, MatButtonModule, MatToolbarModule, MatDatepickerModule, MatCardModule,],
+  exports: [SidebarComponent,MatInputModule, MatButtonModule, MatToolbarModule, MatDatepickerModule, MatCardModule,],
 
   bootstrap: [AppComponent]
 })

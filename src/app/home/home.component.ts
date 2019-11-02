@@ -1,6 +1,7 @@
 import { User } from './../models/user';
 import { Component, OnInit, DoCheck } from '@angular/core';
 import{UserService} from '../services/user.service'
+import { UploadService } from '../services/upload.service';
 import { GLOBAL } from '../services/global'
 import { Router,ActivatedRoute, Params } from '@angular/router';
 
@@ -20,6 +21,8 @@ export class HomeComponent implements OnInit,DoCheck {
   public user:User[]
 constructor(
   private _userService: UserService,
+  private _uploadService:UploadService,
+  
   private  _route: ActivatedRoute,
   private _router:Router
 ) {

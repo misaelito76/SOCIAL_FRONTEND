@@ -1,13 +1,13 @@
-<div id="avatar" class=" mat-elevation-z8">
+<div id="avatar"*ngIf="identity" matT class=" mat-elevation-z8">
   <div class="row">
-    <div class="header col-sm-4">
+    <div class=" header col-sm-11">
       <h2>
         <i class=" h1 material-icons text-left">
           pets
         </i>
         {{ user.petName }}
       </h2>
-      <img class="img-thumbnail" style="width:100% " src="{{ url + 'get-image-user/' + user.image }}"
+      <img class="img-thumbnail" style="min-width:85% ;max-width:85%;min-height: 10%;  " src="{{ url + 'get-image-user/' + user.image }}"
         *ngIf="user && user.image" />
       <img class="img-thumbnail" style="width:100% " src="assets/user.jpg" *ngIf="!user.image" />
     </div>
@@ -52,45 +52,87 @@
             </span>
           </a>
         </div>
+        <br><br>
+        <mat-divider></mat-divider>
+
+        <div class=" row">
+
+
+          <div class=" pubsend col-12">
+
+            <form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm)" class=" color-dark  ">
+    
+           <div class="col-sm-1">
+
+
+                <button mat-raised-button matTooltip="Cute images only" matTooltipPosition="above"
+                  (click)="fileInput.click()"><i class="material-icons">
+                    image
+                  </i> <input hidden (change)="fileChangeEvent($event)" #fileInput type="file" id="file">
+                </button>
+              </div>
+          <div class=" pubsend col-8">
+              <input name="text" #text="ngModel" [(ngModel)]="publication.text" class="form-control"
+                placeholder="What do you have in mind?" aria-label="Recipient's username"
+                aria-describedby="basic-addon2">
+                </div>
+          
+               <div class="col-sm-1">
+
+              <button  *ngIf="publication.text" matTooltip="New post" matTooltipPosition="above" type="submit"
+                class=" upload btn btn-lightborder " color="silver" (click)="onSubmit()"
+                [disabled]="!newPubForm.form.valid"><i class="material-icons">
+                  pets
+                </i></button>
+                </div>
+         
+
+
+            </form>
+
+
+
+          </div>
+        </div>
+
       </div>
-    </div>
-    <button matTooltip="Lost Pet!" matTooltipClass="danger" matTooltipPosition="left"
-      class="floating3 mat-fab mat-raised mat-mini mat-danger text-danger bg-dark mat-elevation-z18"
-      routerLink="/pet-lost">
-      <mat-icon class="icon_help">outlined_flag</mat-icon>
-    </button>
-    <button matTooltip="Edit profile" matTooltipPosition="left"
-      class="floating2 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
-      routerLink="/edit-user">
-      <mat-icon class="icon_help">edit</mat-icon>
-    </button>
-    <button matTooltip="Pets care" matTooltipPosition="left"
-      class="floating1 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18" type="button">
-      <mat-icon class="icon_help">local_hospital</mat-icon>
-    </button>
+      <button matTooltip="Lost Pet!" matTooltipClass="danger" matTooltipPosition="left"
+        class="floating3 mat-fab mat-raised mat-mini mat-danger text-danger bg-dark mat-elevation-z18"
+        routerLink="/pet-lost">
+        <mat-icon class="icon_help">outlined_flag</mat-icon>
+      </button>
+      <button matTooltip="Edit profile" matTooltipPosition="left"
+        class="floating2 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18"
+        routerLink="/edit-user">
+        <mat-icon class="icon_help">edit</mat-icon>
+      </button>
+      <button matTooltip="Pets care" matTooltipPosition="left"
+        class="floating1 mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18" type="button">
+        <mat-icon class="icon_help">local_hospital</mat-icon>
+      </button>
 
-    <button matTooltip="Dog walkers" matTooltipPosition="left" data-toggle="modal" data-target="#exampleModal"
-      class="floating mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18" type="button">
-      <mat-icon class="icon_help">directions_walk</mat-icon>
-    </button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title offset-4" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary offset-8" data-dismiss="modal">Close</button>
+      <button matTooltip="Dog walkers" matTooltipPosition="left" data-toggle="modal" data-target="#exampleModal"
+        class="floating mat-fab mat-raised mat-mini mat-white text-light bg-dark mat-elevation-z18" type="button">
+        <mat-icon class="icon_help">directions_walk</mat-icon>
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title offset-4" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary offset-8" data-dismiss="modal">Close</button>
 
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
