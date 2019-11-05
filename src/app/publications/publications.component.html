@@ -1,72 +1,83 @@
 <div class="container">
-<div class="row">
-  <div class="col-sm-5">
-    <div class="card publications text-center mat-elevation-z20">
-      <cdk-virtual-scroll-viewport style="height: 1000px" itemSize="5" *ngIf="spinner == 'true'">
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="card publications text-center mat-elevation-z20">
+        <cdk-virtual-scroll-viewport style="height: 1000px" itemSize="5" *ngIf="spinner == 'true'">
 
 
-        <div *cdkVirtualFor="let pub of totalPub, let i =index">
+          <div *cdkVirtualFor="let pub of totalPub, let i =index">
 
-          <div class="card-header text-left">
+            <div class="card-header text-left">
 
-
-            <span class="offset-0">
-              <img class=" img border border-dark " id="avatar" src="{{ url + 'get-image-user/' + pub.user.image }}"
-                *ngIf="pub.user.image" />
-              <i> {{pub.user.petName }} </i> | <i> {{(pub.created_at| amFromUnix)| amTimeAgo }} </i><i
-                class="pull-right">
-                <button id="reload" class="btn btn-transparent text-right" (click)="reload($event)"><i
-                    class="material-icons">
-                    refresh
-                  </i></button>
-              </i>
-
-            </span>
-
-          </div>
-          <div class=" card-body text-left col-lg-12">
-            <h4>{{pub.text}}</h4>
-            <br>
-            <mat-divider></mat-divider>
-            <br>
-            <div class="text-center col-lg-12">
-              <img class=" img-thumbnail text-center col-lg-12" src="{{url + 'get-image-pub/' + pub.file}}"
-                *ngIf="identity && identity.image"></div>
-            <br>
-            <mat-divider></mat-divider>
-            <br>
-            <div class="row text-center">
-              <div class="col-sm-4">
-                <i class="material-icons">
-                  thumb_up
-                </i>
+              <div class="row">
+                <div class="col ">
+                  <img class=" img border border-dark " id="avatar" src="{{ url + 'get-image-user/' + pub.user.image }}"
+                    *ngIf="pub.user.image" />
+                  <i> {{pub.user.petName }} </i> | <i> {{(pub.created_at| amFromUnix)| amTimeAgo }} </i> 
+                  <i class="pull-right">
+                    <button id="reload" class="btn btn-transparent text-right" (click)="reload($event)"><i
+                        class="material-icons">
+                        refresh
+                      </i></button>
+                  </i>
+                </div>
+                <div class="">
+                  <i class="material-icons text-right" id="more" (click)="reload($event)">
+                    more_vert
+                  </i>
+                </div>
               </div>
-              <div class="col-sm-4">
-                <i class="material-icons">
-                  forum
-                </i>
-              </div>
-              <div class="col-sm-4">
-                <i class="material-icons">
-                  message
-                </i>
-              </div>
+
             </div>
-            <br>
-            <mat-divider></mat-divider>
-            <br>
+            <div class=" card-body text-left col-lg-12">
+              <h4 >{{pub.text | summary}}</h4>
+              <br>
+              <button class="btn btn-light"(click)="viewMore()">view mas</button>
+              <mat-divider></mat-divider>
+              <br>
+              <div class="text-center col-lg-12">
+                <img class=" img-thumbnail text-center col-lg-12" src="{{url + 'get-image-pub/' + pub.file}}"
+                  *ngIf="identity && identity.image"></div>
+              <br>
+              <mat-divider></mat-divider>
+              <br>
+              <div class="row text-center">
+                <div class="col-sm-6">
+                  <i class="material-icons">
+                    thumb_up
+                  </i>
+                </div>
+                <div class="col-sm-6">
+                  <i class="material-icons">
+                    forum
+                  </i>
+                </div>
+
+              </div>
+              <br>
+              <mat-divider></mat-divider>
+              <br>
+            </div>
           </div>
-        </div>
-      </cdk-virtual-scroll-viewport>
+        </cdk-virtual-scroll-viewport>
+
+      </div>
+    </div>
+    <div class="card sidebar col-sm-7 text-center mat-elevation-z20" *ngIf="spinner == 'true'">
+
+
+      <app-sidebar class=" sidebar1 col-sm-12 "></app-sidebar>
+
 
     </div>
   </div>
-  <div class="card sidebar col-sm-7 text-center mat-elevation-z20">
+  <div *ngIf="spinner == 'false'">
+    <div class=" text-center ">
 
+      <mat-spinner color="dark" class="spinner" [diameter]="60"></mat-spinner>
+    </div>
 
-    <app-sidebar class=" sidebar1 col-sm-12 "></app-sidebar>
-
+    <!-- CARD USERS -->
 
   </div>
-</div>
 </div>

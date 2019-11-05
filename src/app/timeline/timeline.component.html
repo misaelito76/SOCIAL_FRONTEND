@@ -1,113 +1,120 @@
-<br /><br /><br />
 <div class=" container">
   <!--FIRST COL-->
-<div *ngIf="spinner == 'false'">
-        <div class=" text-center ">
 
-          <mat-spinner color="dark"class="spinner" [diameter]="60"></mat-spinner>
-        </div>
-
-        <!-- CARD USERS -->
-
-      </div>
 
   <div class="row">
     <div class="col-sm-5">
       <div *ngIf="spinner == 'true'">
-        <div class="card text-center mat-elevation-z20">
-          <h6>
-            <br />
-            <i class=" h6 material-icons">
-              pets
-            </i>
-            {{ _secondTitle }}
-          </h6>
+        <div class="card timeline text-center mat-elevation-z20">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-10">
+                <br>
+                <h6>
+                  {{ _secondTitle }}
+                </h6>
+              </div>
+              <div class="col-1">
+                <i class="material-icons text-right" id="more" (click)="reload($event)">
+                  more_vert
+                </i>
+              </div>
+            </div></div>
+            <cdk-virtual-scroll-viewport style="height: 550px" itemSize="16">
 
-          <cdk-virtual-scroll-viewport style="height: 550px" itemSize="16">
-
-            <mat-accordion *cdkVirtualFor="let user of users">
-              <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                <mat-expansion-panel-header>
-                  <img class="img border border-dark " id="avatar" src="{{ url + 'get-image-user/' + user.image }}"
-                    *ngIf="user.image" />
-                  <img class="img border border-dark" id="avatar" src="assets/user.jpg" *ngIf="!user.image" />
-                  <mat-panel-title id="center">
-                    <h5 [routerLink]="['/profile',user._id]" routerLinkActive="active">
-                      <i *ngIf="user===user._id" class="material-icons text-success">
-                        pets
-                      </i>
-                      <button class="btn btn-transparent " matTooltip="{{user.petName}}'s Profile "
-                        matTooltipPosition="right">
-                        {{user.name}}</button>
-
-                    </h5>
-                  </mat-panel-title>
-                  <mat-panel-description id="center">
-                    {{ panelOpenState ? "" : " " }}
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-
-                <div class="card mat-elevation-z20">
-                  <div class="row text-left" style="margin-left:2%">
-                    <div class="col-sm-6">
-                      <br />
-                      <h6><b>Animal class:</b> {{ user.animal }}</h6>
-                      <h6><b>Race:</b> {{ user.race }}</h6>
-                      <h6><b>Name:</b> {{ user.petName }}</h6>
-                      <h6><b>Age:</b> {{ user.age }}</h6>
-
-
-
-                      <br />
-                    </div>
-                    <div class="col-sm-6">
-                      <img class="img-thumbnail mat-elevation-z8" style=" margin-top:6%"
-                        src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user && user.image" />
-                      <img class="img-thumbnail mat-elevation-z8" style="width:100% " src="assets/user.jpg"
-                        *ngIf="!user.image" />
-                    </div>
-                    <div class="pull-right" *ngIf="user._id != identity._id">
-                      <button matTooltip="Follow this user " matTooltipPosition="above" id="button"
-                        class="btn btn-transparent border-success" *ngIf="follows.indexOf(user._id)<0"
-                        (click)="followUser(user._id)">
-                        <i class="material-icons text-success offset-1">
-                          check_circle
+              <mat-accordion *cdkVirtualFor="let user of users">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <img class="img border border-dark " id="avatar" src="{{ url + 'get-image-user/' + user.image }}"
+                      *ngIf="user.image" />
+                    <img class="img border border-dark" id="avatar" src="assets/user.jpg" *ngIf="!user.image" />
+                    <mat-panel-title id="center">
+                      <h5 [routerLink]="['/profile',user._id]" routerLinkActive="active">
+                        <i *ngIf="user===user._id" class="material-icons text-success">
+                          pets
                         </i>
+                        <button class="btn btn-transparent " matTooltip="{{user.petName}}'s Profile "
+                          matTooltipPosition="right">
+                          {{user.name}}</button>
 
-                      </button>
-                      <button matTooltip="Unfollow this user " matTooltipPosition="above"
-                        class="btn btn-light border-danger text-left" id="button" *ngIf="follows.indexOf(user._id)>=0 "
-                        (click)="unfollowUser(user._id)">
-                        <i class="material-icons text-danger offset-1">
-                          cancel
-                        </i>
+                      </h5>
+                    </mat-panel-title>
+                    <mat-panel-description id="center">
+                      {{ panelOpenState ? "" : " " }}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
 
-                      </button>
+                  <div class="card mat-elevation-z20">
+                    <div class="row text-left" style="margin-left:2%">
+                      <div class="col-sm-6">
+                        <br />
+                        <h6><b>Animal class:</b> {{ user.animal }}</h6>
+                        <h6><b>Race:</b> {{ user.race }}</h6>
+                        <h6><b>Name:</b> {{ user.petName }}</h6>
+                        <h6><b>Age:</b> {{ user.age }}</h6>
+
+
+
+                        <br />
+                      </div>
+                      <div class="col-sm-6">
+                        <img class="img-thumbnail mat-elevation-z8" style=" margin-top:6%"
+                          src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user && user.image" />
+                        <img class="img-thumbnail mat-elevation-z8" style="width:100% " src="assets/user.jpg"
+                          *ngIf="!user.image" />
+                      </div>
+                      <div class="pull-right" *ngIf="user._id != identity._id">
+                        <button matTooltip="Follow this user " matTooltipPosition="above" id="button"
+                          class="btn btn-transparent border-success" *ngIf="follows.indexOf(user._id)<0"
+                          (click)="followUser(user._id)">
+                          <i class="material-icons text-success offset-1">
+                            check_circle
+                          </i>
+
+                        </button>
+                        <button matTooltip="Unfollow this user " matTooltipPosition="above"
+                          class="btn btn-light border-danger text-left" id="button"
+                          *ngIf="follows.indexOf(user._id)>=0 " (click)="unfollowUser(user._id)">
+                          <i class="material-icons text-danger offset-1">
+                            cancel
+                          </i>
+
+                        </button>
+                      </div>
                     </div>
+                    <br />
                   </div>
-                  <br />
-                </div>
-              </mat-expansion-panel>
-            </mat-accordion>
-          </cdk-virtual-scroll-viewport>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </cdk-virtual-scroll-viewport>
+          </div>
+
         </div>
+
+
+
+
+
+
+
+      </div>
+      <div class="card side col-sm-7 text-center mat-elevation-z20" *ngIf="spinner == 'true'">
+
+
+        <app-sidebar class="sidebar col-sm-12 "></app-sidebar>
+
 
       </div>
 
-      
-
-      
-
-
 
     </div>
-    <div class="card col-sm-7 text-center mat-elevation-z20" *ngIf="spinner == 'true'">
-      
+  </div>
+  <div *ngIf="spinner == 'false'">
+    <div class=" text-center ">
 
-    <app-sidebar class="sidebar col-sm-12 "></app-sidebar>
-
-
+      <mat-spinner color="dark" class="spinner" [diameter]="60"></mat-spinner>
     </div>
 
+    <!-- CARD USERS -->
 
-  </div></div>
+  </div>

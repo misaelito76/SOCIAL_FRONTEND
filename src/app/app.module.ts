@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatDividerModule} from '@angular/material/divider';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MomentModule } from 'angular2-moment'
+import { Ng2ImgMaxModule } from 'ng2-img-max';
+
 import {
 
   MatToolbarModule,
@@ -51,6 +53,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { PublicationsComponent } from './publications/publications.component';
 import { PostsComponent } from './posts/posts.component';
+import { SummaryPipe } from './summaryPipe';
 const routes: Routes = [
   {
     path: '',
@@ -91,11 +94,12 @@ const routes: Routes = [
     SidebarComponent,
     PublicationsComponent,
     PostsComponent,
-    
+SummaryPipe,
 
 
   ],
   imports: [    
+        Ng2ImgMaxModule,
 
        MomentModule,
     ScrollingModule,

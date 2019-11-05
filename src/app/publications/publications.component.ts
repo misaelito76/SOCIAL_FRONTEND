@@ -1,3 +1,4 @@
+import { SummaryPipe } from './../summaryPipe';
 
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { Component, OnInit, DoCheck } from '@angular/core';
@@ -11,7 +12,8 @@ import { UploadService } from '../services/upload.service';
 import { FollowService } from './../services/follow.service';
 import { Follow } from './../models/follow';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { Pipe, PipeTransform } from '@angular/core';
+import { stringify } from '@angular/core/src/util';
 @Component({
 	selector: 'app-publications',
 	templateUrl: './publications.component.html',
@@ -36,14 +38,16 @@ export class PublicationsComponent implements OnInit, DoCheck {
 	public user: User;
 	public itemsPerPage;
 	public totalPub: Publication[];
+	public maxLength: number
 	public publication: Publication;
+	public summary: SummaryPipe
+	public si = true
 
 	constructor(
 		private _publicationService: PublicationService,
 		private _uploadService: UploadService,
 		private _userService: UserService,
 		private _followService: FollowService,
-
 		private _route: ActivatedRoute,
 		private _router: Router,
 	) {
@@ -53,51 +57,43 @@ export class PublicationsComponent implements OnInit, DoCheck {
 		this.url = GLOBAL.url;
 		this.publication = new Publication("", "", "", "", this.identity._id);
 		this.identity = this._userService.getIdentity();
-		this.url = GLOBAL.url
+		this.url = GLOBAL.url;
 
 	}
+
+
 	selectedFile: File = null;
 	onSelectFile(event: any) {
 		this.selectedFile = <File>event.target.files[0]
 
 	}
+	
 
 
 	ngOnInit() {
-
 		this.url = GLOBAL.url
-
 		this.identity = this._userService.getIdentity();
 		this.getPublications()
 
 	}
 	reload(event) {
 		this.getPublications()
-
 	}
 	public spinner = 'false';
-
-	
 	ngDoCheck() {
 		this.identity = this._userService.getIdentity();//*DoCheck refresh screen after this change
-
 	}
-
-
 	getPublications() {
 		this._publicationService.getPublications(this.token).subscribe(response => {
 			console.log(response)
-			if (response.Publications) {
+			if (response.publications) {
 				this.spinner = 'true';
-				this.total = response.Total_items;
+				this.total = response.total_items;
 				this.itemsPerPage = response.items_per_page//paginaccion
-				this.pages = response.Pages
-				this.totalPub = response.Publications
+				this.pages = response.pages
+				this.totalPub = response.publications
 				this.status = 'success';
-
-
 			}
-
 		}, error => {
 			var errorMessage = <any>error;
 			console.log(errorMessage);
@@ -107,16 +103,12 @@ export class PublicationsComponent implements OnInit, DoCheck {
 
 		})
 	}
-
-
-
 	//Upload select file;
 	public filesToUpload: Array<File>;
 	fileChangeEvent(fileInput: any) {
 		this.filesToUpload = <Array<File>>fileInput.target.files;
 		console.log(this.filesToUpload)
 	}
-
 	onSubmit(form) {
 		this._publicationService.addPublication(this.token, this.publication).subscribe(
 			response => {
@@ -130,16 +122,11 @@ export class PublicationsComponent implements OnInit, DoCheck {
 							this.status = 'success';
 							this.total = response.total_items
 							//form.reset()
-
 						})
-
 				}
-
 				else {
 
 					this.status = 'error'
-
-
 				}
 
 

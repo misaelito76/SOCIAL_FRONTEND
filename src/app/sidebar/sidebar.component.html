@@ -1,4 +1,4 @@
-<div id="avatar"*ngIf="identity" matT class=" mat-elevation-z8">
+<div id="avatar" *ngIf="identity" matT class=" mat-elevation-z8">
   <div class="row">
     <div class=" header col-sm-11">
       <h2>
@@ -7,14 +7,11 @@
         </i>
         {{ user.petName }}
       </h2>
-      <img class="img-thumbnail" style="min-width:85% ;max-width:85%;min-height: 10%;  " src="{{ url + 'get-image-user/' + user.image }}"
-        *ngIf="user && user.image" />
+      <img class="img-thumbnail" style="min-width:85% ;max-width:85%;min-height: 10%;  "
+        src="{{ url + 'get-image-user/' + user.image }}" *ngIf="user && user.image" />
       <img class="img-thumbnail" style="width:100% " src="assets/user.jpg" *ngIf="!user.image" />
     </div>
-
   </div>
-
-
   <div class="card-footer  " *ngIf="stats">
     <br>
     <div id="br" class="">
@@ -54,47 +51,34 @@
         </div>
         <br><br>
         <mat-divider></mat-divider>
-
-        <div class=" row">
-
-
-          <div class=" pubsend col-12">
-
-            <form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm)" class=" color-dark  ">
-    
-           <div class="col-sm-1">
-
-
-                <button mat-raised-button matTooltip="Cute images only" matTooltipPosition="above"
-                  (click)="fileInput.click()"><i class="material-icons">
-                    image
-                  </i> <input hidden (change)="fileChangeEvent($event)" #fileInput type="file" id="file">
-                </button>
-              </div>
-          <div class=" pubsend col-8">
-              <input name="text" #text="ngModel" [(ngModel)]="publication.text" class="form-control"
+        <form #newPubForm="ngForm" class=" col-lg-12 ">
+          <div class="row  color-dark">
+            <div class="col-sm-1">
+              <a matTooltip="Cute images only" matTooltipPosition="above" (click)="fileInput.click()"><i
+                  class="material-icons" id="imaging">
+                  image
+                </i> <input hidden (change)="fileChangeEvent($event)" #fileInput type="file" id="file">
+              </a>
+            </div>
+            <div class=" col-lg-9">
+              <input name="text" #text="ngModel" [(ngModel)]="publication.text" id="pub" class="form-control"
                 placeholder="What do you have in mind?" aria-label="Recipient's username"
                 aria-describedby="basic-addon2">
-                </div>
-          
-               <div class="col-sm-1">
-
-              <button  *ngIf="publication.text" matTooltip="New post" matTooltipPosition="above" type="submit"
-                class=" upload btn btn-lightborder " color="silver" (click)="onSubmit()"
-                [disabled]="!newPubForm.form.valid"><i class="material-icons">
-                  pets
-                </i></button>
-                </div>
-         
-
-
-            </form>
-
-
-
+            </div>
+            <div class="col-1">
+              <span>
+                <i class="material-icons" id="emoticons" *ngIf="!publication.text" matTooltip="Emojis"
+                  matTooltipPosition="above" (click)="onSubmit(newPubForm)">
+                  emoji_emotions
+                </i>
+                <i class="material-icons" id="emoticons" *ngIf="publication.text" matTooltip="Send new post"
+                  matTooltipPosition="above" (click)="onSubmit(newPubForm)">
+                  send
+                </i></span>
+            </div>
           </div>
-        </div>
-
+          <br>
+        </form>
       </div>
       <button matTooltip="Lost Pet!" matTooltipClass="danger" matTooltipPosition="left"
         class="floating3 mat-fab mat-raised mat-mini mat-danger text-danger bg-dark mat-elevation-z18"

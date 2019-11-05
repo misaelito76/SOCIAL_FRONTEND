@@ -64,6 +64,7 @@ export class TimelineComponent implements OnInit, DoCheck {
 		this.loadPage();
 
 	}
+
 	
 
 	loadPage() {
@@ -119,19 +120,17 @@ export class TimelineComponent implements OnInit, DoCheck {
 	// GET USERS
 	public spinner = 'false';
 
-	getUsers(page) {//paginaccion
+	getUsers(page) {
 		this._userService.getUsers(page).subscribe(
 			response => {
-				//console.log(response.users)
 				if (response.users) {
 					this.spinner = 'true';
-										this.status = 'success';
-
+					this.status = 'success';
 					this.total = response.total;
 					this.pages = response.pages;
 					this.follows = response.users_following;
-					this.itemsPerPage = response.items_per_page//paginaccion
-						this.users = response.users;//paginaccion
+					this.itemsPerPage = response.items_per_page
+						this.users = response.users;
 
 			
 

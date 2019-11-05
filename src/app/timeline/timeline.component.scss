@@ -12,8 +12,11 @@
   margin-top: 250px;
   margin-left:550px
 }
+.timeline,.side{
+  margin-top:45px
+}
 .mat-spinner circle, .mat-spinner circle {
-    stroke: rgb(2, 8, 19)!important;
+    stroke: rgb(16, 17, 17)!important;
 }
 .sidebar{
   margin-left:90px;
@@ -21,6 +24,11 @@
 }
 #center{
   margin-top:18px
+}
+#more{
+    cursor:pointer;
+    margin-right:1px;
+    margin-top:20px
 }
 #button{
   margin-left:2% ;
