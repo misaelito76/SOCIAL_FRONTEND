@@ -1,5 +1,7 @@
+import { Like } from './../models/like';
 import { FollowService } from './../services/follow.service';
 import { Follow } from './../models/follow';
+
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { UserService } from '../services/user.service'
@@ -7,6 +9,7 @@ import { GLOBAL } from '../services/global'
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { User } from '../models/user';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LikeService } from '../services/like.service';
 
 @Component({
 	selector: 'app-timeline',
@@ -33,6 +36,8 @@ export class TimelineComponent implements OnInit, DoCheck {
 	public itemsPerPage;
 	public user: User;
 	public follow;
+	
+
 	public following;
 	public followed;
 
@@ -41,6 +46,7 @@ export class TimelineComponent implements OnInit, DoCheck {
 		private _followService: FollowService,
 		private _route: ActivatedRoute,
 		private _router: Router,
+		private _likeService: LikeService,
 
 
 	) {
@@ -82,15 +88,19 @@ export class TimelineComponent implements OnInit, DoCheck {
 				if (response.user) {
 					console.log(response);
 					this.user = response.user;
-					if (response.following && response.following._id) {
-						this.following = true
+					if (response.following && response.following._id
+					) {
+						this.following = true;
 					} else {
-						this.following = false
+						this.following = false;
+
 					}
-					if (response.followed && response.followed._id) {
-						this.followed = true
+					if (response.followed && response.followed._id
+						) {
+						this.followed = true;
 					} else {
-						this.followed = false
+						this.followed = false;
+
 					}
 
 				} else {
@@ -129,8 +139,9 @@ export class TimelineComponent implements OnInit, DoCheck {
 					this.total = response.total;
 					this.pages = response.pages;
 					this.follows = response.users_following;
+					//this.likes = response.users_liking;
 					this.itemsPerPage = response.items_per_page
-						this.users = response.users;
+				    this.users = response.users;
 
 			
 
@@ -150,15 +161,17 @@ export class TimelineComponent implements OnInit, DoCheck {
 			}
 		);
 	}
-
+//*LO DEJEEEE AQUIIIIIIIII
 	public followUserOver;
 	mouseEnter(user_id) {
 		this.followUserOver = user_id;
 	}
 
+
 	mouseLeave(user_id) {
 		this.followUserOver = 0;
 	}
+
 
 	followUser(followed) {
 		var follow = new Follow('', this.identity._id, followed);
@@ -206,6 +219,8 @@ export class TimelineComponent implements OnInit, DoCheck {
 		);
 
 	}
+	
+
 
 
 

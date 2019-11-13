@@ -32,21 +32,45 @@
             <div class=" card-body text-left col-lg-12">
               <h4 >{{pub.text | summary}}</h4>
               <br>
-              <button class="btn btn-light"(click)="viewMore()">view mas</button>
+
+              <button class="btn btn-light"(click)="descambiarCarro(pub._id)">view mas</button>
               <mat-divider></mat-divider>
               <br>
               <div class="text-center col-lg-12">
                 <img class=" img-thumbnail text-center col-lg-12" src="{{url + 'get-image-pub/' + pub.file}}"
                   *ngIf="identity && identity.image"></div>
               <br>
+              <div class="row text-center">
+              <div class="col-4">
+                  <span ><b>Likes : </b> </span> <span class="badge badge-secondary"
+                  >{{likesCount}}</span>
+              </div>
+              <div class="col-8">
+                  <span><b>Comments : </b> </span> <span class="badge badge-secondary"
+                  ></span>
+                </div>
+                </div>
+          
+           
+<br>
               <mat-divider></mat-divider>
               <br>
               <div class="row text-center">
                 <div class="col-sm-6">
-                  <i class="material-icons">
-                    thumb_up
-                  </i>
+
+                    <a matTooltip="Like this user"  matTooltipPosition="above" id="button"
+                    class="like"
+                    (click)="LikePublication(pub._id)">
+                    <i *ngIf="!isActive"class="material-icons text-dark offset-1">
+                        favorite
+                    </i>
+                    <i *ngIf="isActive"class="material-icons text-dark offset-1">
+                        favorite_border
+                    </i>
+
+                  </a>
                 </div>
+             
                 <div class="col-sm-6">
                   <i class="material-icons">
                     forum
@@ -54,6 +78,7 @@
                 </div>
 
               </div>
+
               <br>
               <mat-divider></mat-divider>
               <br>

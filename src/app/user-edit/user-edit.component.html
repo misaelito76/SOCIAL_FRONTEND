@@ -117,7 +117,7 @@
       </mat-form-field>
 
       <mat-form-field class="col-sm-3">
-        <ngx-mat-file-input  #removableInput type="file"class="max-width:1px" name="image" [(ngModel)]="image"
+        <ngx-mat-file-input id="icon_mod" #removableInput type="file"class="max-width:1px" name="image" [(ngModel)]="image"
           (change)="onSelectFile($event); fileChangeEvent($event)" placeholder="Photo:">
         </ngx-mat-file-input>
 
@@ -125,7 +125,7 @@
 
         &nbsp;
 
-        <mat-icon matSuffix class="icon_mod">add_photo_alternate</mat-icon>
+        <mat-icon  matSuffix class="icon_mod">add_photo_alternate</mat-icon>
 
       </mat-form-field>
       <mat-form-field class="col-sm-3">

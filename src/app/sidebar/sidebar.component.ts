@@ -1,3 +1,4 @@
+import { LikeService } from './../services/like.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../models/user';
@@ -25,6 +26,8 @@ export class SidebarComponent implements OnInit,DoCheck {
 	public follow;
 	public following;
 	public followed;
+	public like;
+	public liked;
 	public publication: Publication;
 	public total;
 	public page;
@@ -34,7 +37,7 @@ export class SidebarComponent implements OnInit,DoCheck {
 		private _router: Router,
 		private _userService: UserService,
 		private _followService: FollowService,
-
+        private _likeService : LikeService,
 		private _publicationService: PublicationService,
 		private _uploadService: UploadService,
 	) {
@@ -44,6 +47,8 @@ export class SidebarComponent implements OnInit,DoCheck {
 		this.url = GLOBAL.url;
 		this.followed = false;
 		this.following = false;
+		this.like = false;
+		this.liked = false;
 		this.stats = this._userService.getStats()
 		this.user = new User("", "", "", "", "", "", "ROLE_USER",
 			"", "", "", "", "", "", "", "", "", "", "", "", "", "");
@@ -68,15 +73,24 @@ export class SidebarComponent implements OnInit,DoCheck {
 				if (response.user) {
 					console.log(response);
 					this.user = response.user;
-					if (response.following && response.following._id) {
+					if (response.following && response.following._id
+					) {
 						this.following = true;
+						this.like =true
 					} else {
-						this.following = false
+						this.following = false;
+						this.like =false
+
 					}
-					if (response.followed && response.followed._id) {
+					if (response.followed && response.followed._id
+					&&response.liked &&response.liked._id) {
 						this.followed = true;
+						this.liked =true
+
 					} else {
-						this.followed = false
+						this.followed = false;
+						this.like =false
+
 					}
 
 				} else {

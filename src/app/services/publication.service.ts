@@ -11,7 +11,8 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class PublicationService {
-  public url: string;
+	public url: string;
+	public identityPub
   constructor(
     private _http: HttpClient
   ) { 
@@ -24,6 +25,7 @@ export class PublicationService {
 
 	 	return this._http.post(this.url+'publication/', params, {headers: headers});
 	}
+	
 	
 
 
@@ -43,6 +45,26 @@ export class PublicationService {
 		
 		return this._http.delete(this.url +'publication/:'+ id, {headers: headers});
 	} 
+	getPublication(id):Observable<any>{
+		let headers = new HttpHeaders().set('Content-Type','application/json')
+									   //.set('Authorization',this.getToken());
+
+		return this._http.get(this.url+'publication/'+id, {headers: headers});
+	}
+	getIdentityPub(){
+		let identity = JSON.parse(localStorage.getItem('identityPub'));
+
+		if(identity != "undefined"){
+			this.identityPub = this.identityPub;
+		}else{
+			this.identityPub = null;
+		}
+
+		return this.identityPub;
+	}
+
+	//* aqui lo deje para cambiarlo a pub
+
 
 
 	

@@ -23,7 +23,7 @@
               <b>Following : </b>
             </span>
             <span class="badge badge-secondary">
-              <u> {{stats.following}} </u>
+              <u> {{stats.following}} {{stats.liking}}{{stats.liked}}</u>
             </span>
           </a>
 
@@ -72,7 +72,8 @@
                   emoji_emotions
                 </i>
                 <i class="material-icons" id="emoticons" *ngIf="publication.text" matTooltip="Send new post"
-                  matTooltipPosition="above" (click)="onSubmit(newPubForm)">
+                  matTooltipPosition="above" (click)="onSubmit(newPubForm)"
+                  >
                   send
                 </i></span>
             </div>
